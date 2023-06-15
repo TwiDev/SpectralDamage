@@ -1,0 +1,30 @@
+# Config - Spectral Damage a plugin by TwiDev
+
+# Maximum random coordinate on the X axis of the hologram location
+offset_x: 1.6
+# Maximum random coordinate on the Y axis of the hologram location
+offset_y: 1.2
+# Maximum random coordinate on the Z axis of the hologram location
+offset_z: 1.6
+
+falling_animation: true
+
+# Initial speed of the hologram allowing it to accelerate upwards before falling
+initial_speed: 1.15
+
+# Acceleration at which the hologram is attracted to the ground
+acceleration: 4
+
+# Damage display format (placeholder %damage% will be replaced with damage value)
+damage_format: "&c- &4%damage% §cHP"
+
+# hologram lifetime (Is fixed so that the hologram disappears after it is in the ground according to
+# at default initial speed and acceleration values)
+# Duration must be in ticks (1 seconds = 20 ticks)
+living_time: 23
+
+# Players are affected by damage display (true/false)
+player_damage_indicator: true
+
+# Entities (not players) are affected by damage display (true/false)
+entities_damage_indicator: true

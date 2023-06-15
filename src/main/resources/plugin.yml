@@ -1,0 +1,8 @@
+name: SpectralDamage
+author: TwiDev
+version: 1.0.0
+main: ch.twidev.spectral.SpectralDamage
+
+commands:
+  spectraldamage:
+    description: Spectral Damage default command
