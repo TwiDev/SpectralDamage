@@ -1,6 +1,7 @@
 package ch.twidev.spectraldamage.nms.v1_17_R1;
 
 import ch.twidev.spectraldamage.nms.common.IPackets;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.minecraft.network.chat.ChatMessage;
 import net.minecraft.network.protocol.game.PacketPlayOutEntity;
 import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;

@@ -11,6 +11,7 @@
 
     <groupId>ch.twidev.spectraldamage</groupId>
     <artifactId>spectraldamage-core</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -52,51 +53,61 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_8_r3</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_9_r2</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_10_r1</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_11_r1</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_12_r1</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_13_r2</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_14_r1</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_15_r1</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_16_r3</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_17_r1</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <!--<dependency>
@@ -107,37 +118,51 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_18_r2</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_19_r1</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_19_r2</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_19_r3</artifactId>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_20_r1</artifactId>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!-- any other plugins -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.3.1</version>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <outputDirectory>C:\Users\prezm\Desktop\server_local\1_8_8_dev_1\plugins</outputDirectory>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
             </plugin>
         </plugins>
