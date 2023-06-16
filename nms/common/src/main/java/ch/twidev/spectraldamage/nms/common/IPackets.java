@@ -8,7 +8,7 @@ public interface IPackets {
 
     int spawnHologram(Player player, Location location, double damage, String format, Plugin plugin);
 
-    void relEntityMove(Player player, int entityId, byte x, byte y, byte z, boolean b3);
+    void relEntityMove(Player player, int entityId, double y, double dy, boolean b3);
 
     void destroyEntity(Player player, int entityId);
 

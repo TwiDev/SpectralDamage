@@ -32,13 +32,14 @@ public class PacketsV1_12_R1 implements IPackets {
     }
 
     @Override
-    public void relEntityMove(Player player, int entityId, byte x, byte y, byte z, boolean b3) {
+    public void relEntityMove(Player player, int entityId, double y, double dy, boolean b3) {
         PacketPlayOutEntity.PacketPlayOutRelEntityMove packetPlayOutRelEntityMove = new PacketPlayOutEntity.PacketPlayOutRelEntityMove(
-                entityId, x, y, z, b3
+                entityId,0, (short) (((y + dy) * 32 - y * 32) * 128),0, b3
         );
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packetPlayOutRelEntityMove);
 
     }
+
 
     @Override
     public void destroyEntity(Player player, int entityId) {
@@ -47,6 +48,6 @@ public class PacketsV1_12_R1 implements IPackets {
 
     @Override
     public String getVersionName() {
-        return "V1.8_R3";
+        return "V1.12_R1";
     }
 }
