@@ -3,7 +3,6 @@ package ch.twidev.spectral.listener;
 import ch.twidev.spectral.SpectralDamage;
 import ch.twidev.spectral.config.ConfigManager;
 import ch.twidev.spectral.config.ConfigVars;
-import ch.twidev.spectral.packet.PacketFactory;
 import ch.twidev.spectral.tasks.AsyncDestroyTask;
 import ch.twidev.spectral.tasks.AsyncHologramTask;
 import ch.twidev.spectral.utils.StringUtils;
@@ -38,7 +37,7 @@ public class DamageListener implements Listener {
 
             // Create armor stand NMS entity
 
-            int armorStandId = PacketFactory.get().spawnHologram(damager, targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage()), SpectralDamage.get());
+            int armorStandId =  SpectralDamage.get().getPacketManager().spawnHologram(damager, targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage()), SpectralDamage.get());
 
             if(ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean()) {
                 AsyncHologramTask.createHologramTask(damager, armorStandId, targetLocation);

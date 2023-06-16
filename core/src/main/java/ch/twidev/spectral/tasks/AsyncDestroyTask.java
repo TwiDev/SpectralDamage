@@ -3,7 +3,6 @@ package ch.twidev.spectral.tasks;
 import ch.twidev.spectral.SpectralDamage;
 import ch.twidev.spectral.config.ConfigManager;
 import ch.twidev.spectral.config.ConfigVars;
-import ch.twidev.spectral.packet.PacketFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -35,7 +34,7 @@ public class AsyncDestroyTask extends BukkitRunnable {
     @Override
     public void run() {
         if(player.isOnline()) {
-            PacketFactory.get().destroyEntity(player, entityId);
+            SpectralDamage.get().getPacketManager().destroyEntity(player, entityId);
         }
 
         SpectralDamage.TASKS_ID.remove(this.getTaskId());

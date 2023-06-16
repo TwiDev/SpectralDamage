@@ -3,7 +3,7 @@ package ch.twidev.spectral.tasks;
 import ch.twidev.spectral.SpectralDamage;
 import ch.twidev.spectral.config.ConfigManager;
 import ch.twidev.spectral.config.ConfigVars;
-import ch.twidev.spectral.packet.PacketFactory;
+
 import ch.twidev.spectral.utils.LocationUtils;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -57,7 +57,7 @@ public class AsyncHologramTask extends BukkitRunnable {
         double time = tick/20d;
         double dy = INITIAL_SPEED*time - 0.5d*ACCELERATION*Math.pow(time, 2);
 
-        PacketFactory.get().relEntityMove(player, armorStandId,
+        SpectralDamage.get().getPacketManager().relEntityMove(player, armorStandId,
                 (byte) 0,
                 LocationUtils.getShortPoint(initialLocation.getY(), dy),
                 (byte) 0,
@@ -65,7 +65,7 @@ public class AsyncHologramTask extends BukkitRunnable {
 
 
         if(tick >= DURATION) {
-            PacketFactory.get().destroyEntity(player, armorStandId);
+            SpectralDamage.get().getPacketManager().destroyEntity(player, armorStandId);
             this.cancel();
 
         }
