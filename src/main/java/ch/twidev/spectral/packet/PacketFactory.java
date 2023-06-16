@@ -20,7 +20,7 @@ public class PacketFactory {
         if(instance == null) {
             throw new UnsupportedVersionException();
         }else{
-            SpectralDamage.log("Load Packet Factory Class " + instance.getClass().getSuperclass().getSimpleName());
+            SpectralDamage.log("Load Packet Factory Class " + instance.getVersionName());
         }
     }
 
