@@ -17,6 +17,7 @@ import ch.twidev.spectraldamage.nms.v1_8_R3.PacketsV1_8_R3;
 import ch.twidev.spectraldamage.nms.v1_9_R2.PacketsV1_9_R2;
 import org.bukkit.Bukkit;
 
+import java.sql.SQLOutput;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -69,6 +70,9 @@ public enum NMSVersion {
         if (!matcher.find()) {
             return UNKNOWN;
         }
+
+        System.out.println("MATCHER VERSION");
+        System.out.println(matcher.group());
 
         String nmsVersionName = matcher.group();
         try {
