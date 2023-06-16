@@ -49,8 +49,6 @@ public class SpectralDamage extends JavaPlugin {
         // Load config file values
         ConfigManager.load();
 
-        log("CURRENT VERSION " + NMSVersion.getCurrentVersion());
-
         // Init NMS Version manager
         try {
             this.packetManager = NMSVersion.getCurrentVersion().getManagerFactory().create();
@@ -59,6 +57,8 @@ public class SpectralDamage extends JavaPlugin {
         } catch (NMSManagerFactory.OutdatedVersionException e) {
             throw new PluginEnableException("Spectral Damage doesn't support this version please use " + e.getMinimumSupportedVersion());
         }
+
+        log("[Spectral Damage] is now running in version " + NMSVersion.getCurrentVersion());
 
         // Register listeners
         PluginManager pluginManager = this.getServer().getPluginManager();
