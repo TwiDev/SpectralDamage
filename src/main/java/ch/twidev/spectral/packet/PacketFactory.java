@@ -1,5 +1,6 @@
 package ch.twidev.spectral.packet;
 
+import ch.twidev.spectral.SpectralDamage;
 import ch.twidev.spectral.packet.version.PacketsV1_8;
 import ch.twidev.spectral.utils.VersionUtil;
 import com.avaje.ebean.validation.NotNull;
@@ -18,6 +19,8 @@ public class PacketFactory {
 
         if(instance == null) {
             throw new UnsupportedVersionException();
+        }else{
+            SpectralDamage.log("Load Packet Factory Class " + instance.getClass().getSuperclass().getSimpleName());
         }
     }
 
