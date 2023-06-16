@@ -1,10 +1,10 @@
 # Config - Spectral Damage a plugin by TwiDev
 
-# Maximum random coordinate on the X axis of the hologram location
+# Maximum random coordinate on the X axis of the hologram location (cannot be negative)
 offset_x: 1.25
-# Maximum random coordinate on the Y axis of the hologram location
+# Maximum random coordinate on the Y axis of the hologram location (can be negative)
 offset_y: 0.65
-# Maximum random coordinate on the Z axis of the hologram location
+# Maximum random coordinate on the Z axis of the hologram location (cannot be negative)
 offset_z: 1.25
 
 falling_animation: true
