@@ -4,9 +4,15 @@ import ch.twidev.spectral.command.SpectralDamageCommand;
 import ch.twidev.spectral.config.ConfigManager;
 import ch.twidev.spectral.config.ConfigValue;
 import ch.twidev.spectral.config.ConfigVars;
+import ch.twidev.spectral.exception.PluginEnableException;
 import ch.twidev.spectral.listener.DamageListener;
+import ch.twidev.spectral.nms.NMSManagerFactory;
+import ch.twidev.spectral.nms.NMSVersion;
+import ch.twidev.spectraldamage.nms.common.IPackets;
+import com.avaje.ebean.validation.NotNull;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -22,9 +28,11 @@ public class SpectralDamage extends JavaPlugin {
 
     public static final List<Integer> TASKS_ID = new ArrayList<>();
 
-    public static final Logger LOGGER = Logger.getLogger("SpectralDamage");
+    public static final Logger LOGGER = Logger.getLogger("SpectralDamage", "SpectralDamage");
 
     private static SpectralDamage INSTANCE;
+
+    private IPackets packetManager;
 
     @Override
     public void onEnable() {
@@ -41,6 +49,15 @@ public class SpectralDamage extends JavaPlugin {
         // Load config file values
         ConfigManager.load();
 
+        // Init NMS Version manager
+        try {
+            this.packetManager = NMSVersion.getCurrentVersion().getManagerFactory().create();
+        } catch (NMSManagerFactory.UnknownVersionException e) {
+            throw new PluginEnableException("Spectral Damage only supports Spigot from 1.8 to 1.20.");
+        } catch (NMSManagerFactory.OutdatedVersionException e) {
+            throw new PluginEnableException("Spectral Damage doesn't support this version please use " + e.getMinimumSupportedVersion());
+        }
+
         // Register listeners
         PluginManager pluginManager = this.getServer().getPluginManager();
         pluginManager.registerEvents(new DamageListener(), this);
@@ -48,6 +65,11 @@ public class SpectralDamage extends JavaPlugin {
         // Register commands
         getCommand("spectraldamage").setExecutor(new SpectralDamageCommand());
 
+    }
+
+    @NotNull
+    public IPackets getPacketManager() {
+        return packetManager;
     }
 
     @Override
