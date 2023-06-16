@@ -49,6 +49,8 @@ public class SpectralDamage extends JavaPlugin {
         // Load config file values
         ConfigManager.load();
 
+        log("CURRENT VERSION " + NMSVersion.getCurrentVersion());
+
         // Init NMS Version manager
         try {
             this.packetManager = NMSVersion.getCurrentVersion().getManagerFactory().create();

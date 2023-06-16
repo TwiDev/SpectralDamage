@@ -1,5 +1,6 @@
 package ch.twidev.spectral.nms;
 
+import ch.twidev.spectral.SpectralDamage;
 import ch.twidev.spectraldamage.nms.v1_10_R1.PacketsV1_10_R1;
 import ch.twidev.spectraldamage.nms.v1_11_R1.PacketsV1_11_R1;
 import ch.twidev.spectraldamage.nms.v1_12_R1.PacketsV1_12_R1;
@@ -17,6 +18,7 @@ import ch.twidev.spectraldamage.nms.v1_8_R3.PacketsV1_8_R3;
 import ch.twidev.spectraldamage.nms.v1_9_R2.PacketsV1_9_R2;
 import org.bukkit.Bukkit;
 
+import java.security.SignatureSpi;
 import java.sql.SQLOutput;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,7 +51,12 @@ public enum NMSVersion {
     /* 1.20 - ?        */ v1_20_R1(PacketsV1_20_R1::new),
     /* Other versions  */ UNKNOWN(NMSManagerFactory.unknownVersion());
 
-    private static final NMSVersion CURRENT_VERSION = detectCurrentVersion();
+    private static final NMSVersion CURRENT_VERSION;
+
+    static {
+        CURRENT_VERSION = detectCurrentVersion();
+        SpectralDamage.log("CURRENT VERSION IS " + CURRENT_VERSION);
+    }
 
     final NMSManagerFactory iPackets;
 
@@ -71,8 +78,8 @@ public enum NMSVersion {
             return UNKNOWN;
         }
 
-        System.out.println("MATCHER VERSION");
-        System.out.println(matcher.group());
+        SpectralDamage.log("MATCHER VERSION");
+        SpectralDamage.log(matcher.group());
 
         String nmsVersionName = matcher.group();
         try {
