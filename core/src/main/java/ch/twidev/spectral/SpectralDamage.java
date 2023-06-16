@@ -28,7 +28,7 @@ public class SpectralDamage extends JavaPlugin {
 
     public static final List<Integer> TASKS_ID = new ArrayList<>();
 
-    public static final Logger LOGGER = Logger.getLogger("SpectralDamage", "SpectralDamage");
+    public static final Logger LOGGER = Logger.getLogger("SpectralDamage");
 
     private static SpectralDamage INSTANCE;
 
