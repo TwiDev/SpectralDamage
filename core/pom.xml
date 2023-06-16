@@ -49,6 +49,85 @@
             <version>1.9.4-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_8_r3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_9_r2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_10_r1</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_11_r1</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_12_r1</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_13_r2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_14_r1</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_15_r1</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_16_r3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_17_r1</artifactId>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_18_r1</artifactId>
+        </dependency>!-->
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_18_r2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_19_r1</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_19_r2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_19_r3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_20_r1</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
