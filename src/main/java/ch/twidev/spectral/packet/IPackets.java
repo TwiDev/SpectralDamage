@@ -8,4 +8,6 @@ public interface IPackets {
 
     int spawnHologram(Player player, Location location, double damage, Plugin plugin);
 
+    String getVersionName();
+
 }

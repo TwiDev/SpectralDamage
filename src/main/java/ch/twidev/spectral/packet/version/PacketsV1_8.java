@@ -41,4 +41,8 @@ public class PacketsV1_8 implements IPackets {
 
     }
 
+    @Override
+    public String getVersionName() {
+        return "V1.8_R3";
+    }
 }
