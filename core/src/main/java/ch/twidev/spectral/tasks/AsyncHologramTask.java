@@ -58,9 +58,8 @@ public class AsyncHologramTask extends BukkitRunnable {
         double dy = INITIAL_SPEED*time - 0.5d*ACCELERATION*Math.pow(time, 2);
 
         SpectralDamage.get().getPacketManager().relEntityMove(player, armorStandId,
-                (byte) 0,
-                LocationUtils.getShortPoint(initialLocation.getY(), dy),
-                (byte) 0,
+                initialLocation.getY(),
+                dy,
                 false);
 
 
