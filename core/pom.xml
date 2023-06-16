@@ -110,10 +110,10 @@
             <scope>compile</scope>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_18_r1</artifactId>
-        </dependency>!-->
+        </dependency>
 
         <dependency>
             <groupId>${project.groupId}</groupId>
