@@ -58,10 +58,10 @@ public class AsyncHologramTask extends BukkitRunnable {
         double dy = INITIAL_SPEED*time - 0.5d*ACCELERATION*Math.pow(time, 2);
 
         PacketFactory.get().relEntityMove(player, armorStandId,
-                LocationUtils.getShortPoint(initialLocation.getX()),
+                (byte) 0,
                 LocationUtils.getShortPoint(initialLocation.getY(), dy),
-                LocationUtils.getShortPoint(initialLocation.getZ()),
-                true);
+                (byte) 0,
+                false);
 
 
         if(tick >= DURATION) {
@@ -76,6 +76,7 @@ public class AsyncHologramTask extends BukkitRunnable {
     public synchronized void cancel() throws IllegalStateException {
         Integer id = this.getTaskId();
         SpectralDamage.TASKS_ID.remove(id);
+        System.out.println("CANCEL TASK");
 
         super.cancel();
     }

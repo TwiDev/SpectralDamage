@@ -21,8 +21,7 @@ public class ConfigValue {
         try {
             return (double) value;
         } catch (ClassCastException e) {
-            e.printStackTrace();
-            return -1d;
+            return asInt();
         }
     }
 

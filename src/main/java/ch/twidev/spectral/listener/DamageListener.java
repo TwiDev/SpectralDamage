@@ -34,7 +34,7 @@ public class DamageListener implements Listener {
             double offsetY = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_OFFSET_Y).asDouble();
             double offsetZ = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_OFFSET_Z).asDouble();
 
-            Location targetLocation = target.getLocation().add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1);
+            Location targetLocation = target.getLocation().add(2*offsetX*RANDOM.nextDouble() - offsetX, offsetY, 2*offsetZ*RANDOM.nextDouble() - offsetZ);
 
             // Create armor stand NMS entity
 

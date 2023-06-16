@@ -7,7 +7,7 @@ public class LocationUtils {
     }
 
     public static byte getShortPoint(double coordinate, double adder){
-        return (byte) (((coordinate + adder) * 32 - coordinate * 32) * 128);
+        return new Double((coordinate + adder) * 32 - coordinate * 32).byteValue();
     }
 
 }

@@ -1,16 +1,12 @@
 package ch.twidev.spectral.packet.version;
 
-import ch.twidev.spectral.SpectralDamage;
 import ch.twidev.spectral.packet.IPackets;
-import ch.twidev.spectral.utils.LocationUtils;
 import ch.twidev.spectral.utils.StringUtils;
 import net.minecraft.server.v1_8_R3.*;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.Plugin;
 
 public class PacketsV1_8 implements IPackets {
@@ -33,17 +29,13 @@ public class PacketsV1_8 implements IPackets {
         connection.sendPacket(packet);
         connection.sendPacket(metadata);
 
-        return -1;
+        return armorStandID;
     }
 
     @Override
     public void relEntityMove(Player player, int entityId, byte x, byte y, byte z, boolean b3) {
         PacketPlayOutEntity.PacketPlayOutRelEntityMove packetPlayOutRelEntityMove = new PacketPlayOutEntity.PacketPlayOutRelEntityMove(
-                entityId,
-                x,
-                y,
-                z,
-                b3
+                entityId, x, y, z, b3
         );
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packetPlayOutRelEntityMove);
 
