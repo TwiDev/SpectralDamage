@@ -1,6 +1,7 @@
 package ch.twidev.spectraldamage.nms.v1_20_R1;
 
 import ch.twidev.spectraldamage.nms.common.IPackets;
+import net.minecraft.network.chat.IChatBaseComponent;
 import net.minecraft.network.protocol.game.PacketPlayOutEntity;
 import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
 import net.minecraft.network.protocol.game.PacketPlayOutSpawnEntity;
@@ -23,7 +24,7 @@ public class PacketsV1_20_R1 implements IPackets {
         armorStand.a(true);
         //armorStand.setNoGravity(true);
         armorStand.j(true);
-        armorStand.a(format);
+        armorStand.b(IChatBaseComponent.a(format));
         armorStand.n(true);
 
         int armorStandID = armorStand.af();

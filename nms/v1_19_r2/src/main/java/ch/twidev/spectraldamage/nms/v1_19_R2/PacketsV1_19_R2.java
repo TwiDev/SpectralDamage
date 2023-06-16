@@ -1,9 +1,12 @@
 package ch.twidev.spectraldamage.nms.v1_19_R2;
 
 import ch.twidev.spectraldamage.nms.common.IPackets;
+import net.minecraft.network.chat.IChatBaseComponent;
 import net.minecraft.network.protocol.game.PacketPlayOutEntity;
 import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
+import net.minecraft.network.protocol.game.PacketPlayOutEntityMetadata;
 import net.minecraft.network.protocol.game.PacketPlayOutSpawnEntity;
+import net.minecraft.network.syncher.DataWatcher;
 import net.minecraft.server.network.PlayerConnection;
 import net.minecraft.world.entity.decoration.EntityArmorStand;
 import net.minecraft.world.level.World;
@@ -23,13 +26,14 @@ public class PacketsV1_19_R2 implements IPackets {
         armorStand.a(true);
         //armorStand.setNoGravity(true);
         armorStand.j(true);
-        armorStand.a(format);
+        armorStand.b(IChatBaseComponent.a(format));
         armorStand.n(true);
 
         int armorStandID = armorStand.ah();
 
         PacketPlayOutSpawnEntity packet = new PacketPlayOutSpawnEntity(armorStand);
-        //PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(armorStandID, armorStand.getDataWatcher(), true);
+        //PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(armorStandID, armorStand.metad, true);
+
         connection.a(packet);
         //connection.a(metadata);
 

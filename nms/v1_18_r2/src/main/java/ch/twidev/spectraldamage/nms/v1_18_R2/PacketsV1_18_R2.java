@@ -4,6 +4,7 @@ import ch.twidev.spectraldamage.nms.common.IPackets;
 import net.minecraft.network.chat.ChatMessage;
 import net.minecraft.network.protocol.game.PacketPlayOutEntity;
 import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
+import net.minecraft.network.protocol.game.PacketPlayOutEntityMetadata;
 import net.minecraft.network.protocol.game.PacketPlayOutSpawnEntityLiving;
 import net.minecraft.server.network.PlayerConnection;
 import net.minecraft.world.entity.decoration.EntityArmorStand;
@@ -30,17 +31,10 @@ public class PacketsV1_18_R2 implements IPackets {
         int armorStandID = armorStand.ae();
 
         PacketPlayOutSpawnEntityLiving packet = new PacketPlayOutSpawnEntityLiving(armorStand);
-        /*PacketPlayOutEntityMetadata metadata = null;
-        try {
-            Field field = armorStand.getClass().getField("bg");
-            field.setAccessible(true);
-            metadata = new PacketPlayOutEntityMetadata(armorStandID, (DataWatcher) field.get(armorStand), true);
-        } catch (NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }*/
+        PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(armorStandID, armorStand.ai(), true);
+
         connection.a(packet);
-        /*if(metadata != null)
-            connection.a(metadata);*/
+        connection.a(metadata);
 
         return armorStandID;
     }
