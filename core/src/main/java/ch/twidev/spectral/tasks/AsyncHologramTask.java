@@ -75,7 +75,6 @@ public class AsyncHologramTask extends BukkitRunnable {
     public synchronized void cancel() throws IllegalStateException {
         Integer id = this.getTaskId();
         SpectralDamage.TASKS_ID.remove(id);
-        System.out.println("CANCEL TASK");
 
         super.cancel();
     }

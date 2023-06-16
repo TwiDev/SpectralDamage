@@ -3,17 +3,17 @@ package ch.twidev.spectral.config;
 public enum ConfigVars {
 
     // Maximum random coordinate on the X axis of the hologram location
-    HOLOGRAM_OFFSET_X("offset_x", 1.6d),
+    HOLOGRAM_OFFSET_X("offset_x", 1.25d),
     // Maximum random coordinate on the Z axis of the hologram location
-    HOLOGRAM_OFFSET_Z("offset_z", 1.6d),
+    HOLOGRAM_OFFSET_Z("offset_z", 1.25d),
     // Maximum random coordinate on the Y axis of the hologram location
-    HOLOGRAM_OFFSET_Y("offset_y", 1.2d),
+    HOLOGRAM_OFFSET_Y("offset_y", 0.65d),
     // Initial speed of the hologram allowing it to accelerate upwards before falling
     HOLOGRAM_INITIAL_SPEED("initial_speed", 1.15d),
     // Acceleration at which the hologram is attracted to the ground
     HOLOGRAM_ACCELERATION("acceleration", 4),
     // Damage display format
-    HOLOGRAM_DAMAGE_FORMAT("damage_format", "&c- &4%damage% §cHP"),
+    HOLOGRAM_DAMAGE_FORMAT("damage_format", "&c- &4%damage% &cHP"),
     /**
      * hologram lifetime (Is fixed so that the hologram disappears after it is in the ground according to
      * at default initial speed and acceleration values)
