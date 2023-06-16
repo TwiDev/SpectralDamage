@@ -16,7 +16,7 @@ initial_speed: 1.15
 acceleration: 4
 
 # Damage display format (placeholder %damage% will be replaced with damage value)
-damage_format: "&c- &4%damage% §cHP"
+damage_format: "&c- &4%damage% &cHP"
 
 # hologram lifetime (Is fixed so that the hologram disappears after it is in the ground according to
 # at default initial speed and acceleration values)
