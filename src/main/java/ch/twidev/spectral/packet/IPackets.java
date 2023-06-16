@@ -1,10 +1,11 @@
 package ch.twidev.spectral.packet;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
 public interface IPackets {
 
-    void spawnPacket(int entityID, Location location, Plugin plugin);
+    int spawnHologram(Player player, Location location, double damage, Plugin plugin);
 
 }
