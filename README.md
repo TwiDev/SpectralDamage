@@ -1,4 +1,4 @@
-![spectraldamagelogo](https://s12.gifyu.com/images/SQNjc.png)
+![spectraldamagelogo](https://s12.gifyu.com/images/SQNja.png)
 
 # SpectralDamage
 **Asynchronous client-side (packets) damage indicator spigot plugin**
