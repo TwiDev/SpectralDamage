@@ -7,6 +7,8 @@ import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
 import net.minecraft.network.protocol.game.PacketPlayOutEntityMetadata;
 import net.minecraft.network.protocol.game.PacketPlayOutSpawnEntity;
 import net.minecraft.network.syncher.DataWatcher;
+import net.minecraft.network.syncher.DataWatcherObject;
+import net.minecraft.network.syncher.DataWatcherRegistry;
 import net.minecraft.server.network.PlayerConnection;
 import net.minecraft.world.entity.decoration.EntityArmorStand;
 import net.minecraft.world.level.World;
@@ -15,6 +17,9 @@ import org.bukkit.craftbukkit.v1_19_R2.CraftWorld;
 import org.bukkit.craftbukkit.v1_19_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+
+import java.lang.reflect.Field;
+import java.util.Collections;
 
 public class PacketsV1_19_R2 implements IPackets {
     @Override
@@ -32,10 +37,10 @@ public class PacketsV1_19_R2 implements IPackets {
         int armorStandID = armorStand.ah();
 
         PacketPlayOutSpawnEntity packet = new PacketPlayOutSpawnEntity(armorStand);
-        //PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(armorStandID, armorStand.metad, true);
+        PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(armorStandID, armorStand.al().b());
 
         connection.a(packet);
-        //connection.a(metadata);
+        connection.a(metadata);
 
         return armorStandID;
     }
@@ -58,4 +63,6 @@ public class PacketsV1_19_R2 implements IPackets {
     public String getVersionName() {
         return "V1.19_R2";
     }
+
+
 }
