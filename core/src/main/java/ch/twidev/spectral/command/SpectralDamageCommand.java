@@ -1,5 +1,6 @@
 package ch.twidev.spectral.command;
 
+import ch.twidev.spectral.SpectralDamage;
 import ch.twidev.spectral.config.ConfigManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,6 +18,7 @@ public class SpectralDamageCommand implements CommandExecutor {
             }else{
                 switch (strings[0]) {
                     case "reload":
+                        SpectralDamage.get().reloadConfig();
                         ConfigManager.load();
                         commandSender.sendMessage("§c§lSpectralDamage §8- §aConfig file reloaded successfully!");
                         break;

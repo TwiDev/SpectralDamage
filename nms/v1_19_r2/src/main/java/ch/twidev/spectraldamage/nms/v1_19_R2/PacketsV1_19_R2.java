@@ -2,13 +2,8 @@ package ch.twidev.spectraldamage.nms.v1_19_R2;
 
 import ch.twidev.spectraldamage.nms.common.IPackets;
 import net.minecraft.network.chat.IChatBaseComponent;
-import net.minecraft.network.protocol.game.PacketPlayOutEntity;
-import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
-import net.minecraft.network.protocol.game.PacketPlayOutEntityMetadata;
-import net.minecraft.network.protocol.game.PacketPlayOutSpawnEntity;
-import net.minecraft.network.syncher.DataWatcher;
-import net.minecraft.network.syncher.DataWatcherObject;
-import net.minecraft.network.syncher.DataWatcherRegistry;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.*;
 import net.minecraft.server.network.PlayerConnection;
 import net.minecraft.world.entity.decoration.EntityArmorStand;
 import net.minecraft.world.level.World;
@@ -18,10 +13,8 @@ import org.bukkit.craftbukkit.v1_19_R2.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import java.lang.reflect.Field;
-import java.util.Collections;
-
 public class PacketsV1_19_R2 implements IPackets {
+
     @Override
     public int spawnHologram(Player player, Location location, double damage, String format, Plugin plugin) {
         PlayerConnection connection = ((CraftPlayer) player).getHandle().b;
@@ -35,7 +28,6 @@ public class PacketsV1_19_R2 implements IPackets {
         armorStand.n(true);
 
         int armorStandID = armorStand.ah();
-
         PacketPlayOutSpawnEntity packet = new PacketPlayOutSpawnEntity(armorStand);
         PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(armorStandID, armorStand.al().b());
 

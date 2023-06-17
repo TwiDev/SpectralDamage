@@ -12,7 +12,6 @@ public class ConfigManager {
 
     public static void load() {
         CONFIG_VALUES.clear();
-        SpectralDamage.get().saveConfig();
         FileConfiguration fileConfiguration = SpectralDamage.get().getConfig();
 
         try {

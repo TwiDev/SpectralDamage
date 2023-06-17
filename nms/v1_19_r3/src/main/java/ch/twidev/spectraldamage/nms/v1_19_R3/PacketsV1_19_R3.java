@@ -37,7 +37,6 @@ public class PacketsV1_19_R3 implements IPackets {
         connection.a(packet);
         connection.a(metadata);
 
-
         return armorStandID;
     }
 
