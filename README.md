@@ -1,3 +1,5 @@
+![spectraldamagelogo](https://www.spigotmc.org/data/resource_icons/110/110551.jpg?1687001296)
+
 # SpectralDamage
 **Asynchronous client-side (packets) damage indicator spigot plugin**
 ___
