@@ -8,7 +8,7 @@ ___
 
 >SmartServers is an open collaboration project by [TwiDev](https://github.com/TwiDev).
 
-[![Download](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=DOWNLOAD&logoColor=white "Download")](https://spigotmc.org)  
+[![Download](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=DOWNLOAD&logoColor=white "Download")](https://www.spigotmc.org/resources/spectraldamage-1-8-1-20-free-damage-indicator-plugin-no-dependencies.110551/)  
 (Via spigotmc.org)
 
 **Supported versions: 1.8.X - 1.20**
