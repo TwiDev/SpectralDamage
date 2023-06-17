@@ -1,5 +1,5 @@
 # SpectralDamage
-A Minecraft spigot plugin
+**Asynchronous client-side (packets) damage indicator spigot plugin**
 ___
 
 [![forthebadge made-with-java](https://forthebadge.com/images/badges/made-with-java.svg)](https://java.com/)
