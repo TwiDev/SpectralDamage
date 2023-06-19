@@ -73,21 +73,23 @@ public class SpectralDamage extends JavaPlugin {
         // Register commands
         getCommand("spectraldamage").setExecutor(new SpectralDamageCommand());
 
-        log("[SPECTRAL DAMAGE] Checking for a new update ...");
-        new UpdateChecker(this, 110551).getVersion(version -> {
-            Bukkit.getScheduler().runTaskLater(SpectralDamage.get(), () -> {
-                if (this.getDescription().getVersion().equals(version)) {
-                    getLogger().info("There is not a new update available.");
-                } else {
-                    log("#=====[SPECTRAL DAMAGE A NEW UPDATE IS AVAILABLE (v"+version+")]=====#");
-                    log("# Your spectral damage plugin is out of date !                       #");
-                    log("# please install the latest version available on spigot              #");
-                    log("# to take advantage of the latest fixes and features                 #");
-                    log("# https://bit.ly/spectraldamage                                      #");
-                    log("#====================================================================#");
-                }
-            }, 5*20);
-        });
+        if(ConfigManager.CONFIG_VALUES.get(ConfigVars.UPDATE_CHECKER).asBoolean()) {
+            log("[SPECTRAL DAMAGE] Checking for a new update ...");
+            new UpdateChecker(this, 110551).getVersion(version -> {
+                Bukkit.getScheduler().runTaskLater(SpectralDamage.get(), () -> {
+                    if (this.getDescription().getVersion().equals(version)) {
+                        getLogger().info("There is not a new update available.");
+                    } else {
+                        log("#=====[SPECTRAL DAMAGE A NEW UPDATE IS AVAILABLE (v" + version + ")]=====#");
+                        log("# Your spectral damage plugin is out of date !                       #");
+                        log("# please install the latest version available on spigot              #");
+                        log("# to take advantage of the latest fixes and features                 #");
+                        log("# https://bit.ly/spectraldamage                                      #");
+                        log("#====================================================================#");
+                    }
+                }, 5 * 20);
+            });
+        }
 
     }
 
