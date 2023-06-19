@@ -23,7 +23,7 @@ public class SpectralDamageCommand implements CommandExecutor {
                     }
 
                     break;
-                case "switch":
+                case "toggle":
                     if (commandSender instanceof Player) {
                         Player player = (Player) commandSender;
 

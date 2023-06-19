@@ -1,6 +1,9 @@
 package ch.twidev.spectral.config;
 
 public enum ConfigVars {
+
+    // Check for an update of the plugin at each start and warn the admins
+    UPDATE_CHECKER("update_checker", true),
     // The holograms are visible only to the player, if false the hologram will be visible to everyone
     SHOW_TO_DAMAGER_ONLY("showToDamagerOnly", true),
 
