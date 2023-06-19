@@ -10,6 +10,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import net.minecraft.server.v1_16_R3.*;
 
+import java.lang.reflect.Field;
+
 public class PacketsV1_16_R3 implements IPackets {
     @Override
     public Entity spawnHologram(Player player, Location location, double damage, String format, Plugin plugin) {
@@ -45,6 +47,15 @@ public class PacketsV1_16_R3 implements IPackets {
     @Override
     public org.bukkit.entity.Entity spawnHologram(Location location, double damage, String format, Plugin plugin) {
         EntityArmorStand armorStand = this.createEntity(location, format);
+        Class<?> nmsStandClass = net.minecraft.server.v1_16_R3.Entity.class;
+        try {
+            Field noClip = nmsStandClass.getDeclaredField("noclip");
+            noClip.setAccessible(true);
+            noClip.setBoolean(armorStand, true);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
 
         armorStand.world.addEntity(armorStand);
         return armorStand.getBukkitEntity();
