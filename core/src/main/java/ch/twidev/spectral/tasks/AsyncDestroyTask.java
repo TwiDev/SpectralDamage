@@ -15,6 +15,8 @@ public class AsyncDestroyTask extends BukkitRunnable {
     private final Player player;
     private final int entityId;
 
+    private final TaskType taskType;
+
     /**
      * Create an entity destroying task
      *
@@ -24,6 +26,7 @@ public class AsyncDestroyTask extends BukkitRunnable {
     public AsyncDestroyTask(Player player, int entityId) {
         this.player = player;
         this.entityId = entityId;
+        this.taskType = TaskType.check();
 
         this.runTaskLaterAsynchronously(SpectralDamage.get(), ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_LIVING_TIME).asInt());
 
@@ -33,8 +36,12 @@ public class AsyncDestroyTask extends BukkitRunnable {
 
     @Override
     public void run() {
-        if(player.isOnline()) {
-            SpectralDamage.get().getPacketManager().destroyEntity(player, entityId);
+        if(taskType == TaskType.PACKET) {
+            if (player.isOnline()) {
+                SpectralDamage.get().getPacketManager().destroyEntity(player, entityId);
+            }
+        }else{
+            SpectralDamage.get().
         }
 
         SpectralDamage.TASKS_ID.remove(this.getTaskId());

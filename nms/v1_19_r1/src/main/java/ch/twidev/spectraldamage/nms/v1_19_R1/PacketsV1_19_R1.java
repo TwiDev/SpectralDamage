@@ -20,7 +20,7 @@ import org.bukkit.plugin.Plugin;
 
 public class PacketsV1_19_R1 implements IPackets {
     @Override
-    public int spawnHologram(Player player, Location location, double damage, String format, Plugin plugin) {
+    public Entity spawnHologram(Player player, Location location, double damage, String format, Plugin plugin) {
         PlayerConnection connection = ((CraftPlayer) player).getHandle().b;
         World mcWorld = ((CraftWorld) player.getWorld()).getHandle();
 
@@ -33,7 +33,7 @@ public class PacketsV1_19_R1 implements IPackets {
 
         connection.a(packet);
         connection.a(metadata);
-        return armorStandID;
+        return armorStand.getBukkitEntity();
     }
 
     @Override

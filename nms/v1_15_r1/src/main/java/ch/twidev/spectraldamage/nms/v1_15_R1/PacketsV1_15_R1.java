@@ -12,7 +12,7 @@ import net.minecraft.server.v1_15_R1.*;
 
 public class PacketsV1_15_R1 implements IPackets {
     @Override
-    public int spawnHologram(Player player, Location location, double damage, String format, Plugin plugin) {
+    public Entity spawnHologram(Player player, Location location, double damage, String format, Plugin plugin) {
         PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
         World mcWorld = ((CraftWorld) player.getWorld()).getHandle();
 
@@ -25,7 +25,7 @@ public class PacketsV1_15_R1 implements IPackets {
         connection.sendPacket(packet);
         connection.sendPacket(metadata);
 
-        return armorStandID;
+        return armorStand.getBukkitEntity();
     }
 
     @Override

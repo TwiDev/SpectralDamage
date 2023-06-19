@@ -7,7 +7,7 @@ import org.bukkit.plugin.Plugin;
 
 public interface IPackets {
 
-    int spawnHologram(Player player, Location location, double damage, String format, Plugin plugin);
+    Entity spawnHologram(Player player, Location location, double damage, String format, Plugin plugin);
 
     void relEntityMove(Player player, int entityId, double y, double dy, boolean b3);
 
