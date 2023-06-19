@@ -80,7 +80,7 @@ public class SpectralDamage extends JavaPlugin {
                     if (this.getDescription().getVersion().equals(version)) {
                         getLogger().info("There is not a new update available.");
                     } else {
-                        log("#=====[SPECTRAL DAMAGE A NEW UPDATE IS AVAILABLE (v" + version + ")]=====#");
+                        log("#=====[SPECTRAL DAMAGE A NEW UPDATE IS AVAILABLE (v" + version + ")]==========#");
                         log("# Your spectral damage plugin is out of date !                       #");
                         log("# please install the latest version available on spigot              #");
                         log("# to take advantage of the latest fixes and features                 #");
