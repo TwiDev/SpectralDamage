@@ -60,7 +60,7 @@ public class PacketsV1_9_R2 implements IPackets {
         World mcWorld = ((CraftWorld) location.getWorld()).getHandle();
         EntityArmorStand armorStand = new EntityArmorStand(mcWorld, location.getX(), location.getY(), location.getZ());
         armorStand.setSmall(true);
-        armorStand.setGravity(false);
+        armorStand.setGravity(true);
         armorStand.setInvisible(true);
         armorStand.setCustomName(format);
         armorStand.setCustomNameVisible(true);

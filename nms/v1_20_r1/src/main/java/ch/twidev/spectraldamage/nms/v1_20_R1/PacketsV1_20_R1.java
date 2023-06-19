@@ -62,7 +62,7 @@ public class PacketsV1_20_R1 implements IPackets {
         World mcWorld = ((CraftWorld) location.getWorld()).getHandle();
         EntityArmorStand armorStand = new EntityArmorStand(mcWorld, location.getX(), location.getY(), location.getZ());
         armorStand.a(true);
-        //armorStand.setNoGravity(true);
+        //armorStand.setNoGravity(false);
         armorStand.j(true);
         armorStand.b(IChatBaseComponent.a(format));
         armorStand.n(true);
