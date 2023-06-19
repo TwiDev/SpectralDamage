@@ -3,17 +3,18 @@ package ch.twidev.spectral.tasks;
 import ch.twidev.spectral.SpectralDamage;
 import ch.twidev.spectral.config.ConfigManager;
 import ch.twidev.spectral.config.ConfigVars;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class AsyncDestroyTask extends BukkitRunnable {
 
-    public static AsyncDestroyTask createDestroyingTask(Player player, int entityId) {
-        return new AsyncDestroyTask(player, entityId);
+    public static AsyncDestroyTask createDestroyingTask(Player player, Entity entity) {
+        return new AsyncDestroyTask(player, entity);
     }
 
     private final Player player;
-    private final int entityId;
+    private final Entity entity;
 
     private final TaskType taskType;
 
@@ -21,11 +22,11 @@ public class AsyncDestroyTask extends BukkitRunnable {
      * Create an entity destroying task
      *
      * @param player player to send packet
-     * @param entityId entity id to remove
+     * @param entity entity to remove
      */
-    public AsyncDestroyTask(Player player, int entityId) {
+    public AsyncDestroyTask(Player player, Entity entity) {
         this.player = player;
-        this.entityId = entityId;
+        this.entity = entity;
         this.taskType = TaskType.check();
 
         this.runTaskLaterAsynchronously(SpectralDamage.get(), ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_LIVING_TIME).asInt());
@@ -38,10 +39,11 @@ public class AsyncDestroyTask extends BukkitRunnable {
     public void run() {
         if(taskType == TaskType.PACKET) {
             if (player.isOnline()) {
-                SpectralDamage.get().getPacketManager().destroyEntity(player, entityId);
+                SpectralDamage.get().getPacketManager().destroyEntity(player, entity.getEntityId());
             }
         }else{
-            SpectralDamage.get().
+            SpectralDamage.get().getPacketManager().destroyEntity(entity);
+            entity.remove();
         }
 
         SpectralDamage.TASKS_ID.remove(this.getTaskId());

@@ -5,6 +5,7 @@ import ch.twidev.spectral.config.ConfigManager;
 import ch.twidev.spectral.config.ConfigVars;
 import ch.twidev.spectral.tasks.AsyncDestroyTask;
 import ch.twidev.spectral.tasks.AsyncHologramTask;
+import ch.twidev.spectral.tasks.TaskType;
 import ch.twidev.spectral.utils.StringUtils;
 import org.bukkit.Location;
 import org.bukkit.entity.Creature;
@@ -13,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.util.Vector;
 
 import java.util.Random;
 
@@ -37,12 +39,20 @@ public class DamageListener implements Listener {
 
             // Create armor stand NMS entity
 
-            int armorStandId =  SpectralDamage.get().getPacketManager().spawnHologram(damager, targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage()), SpectralDamage.get());
+            if(TaskType.check() == TaskType.WORLD){
+                Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage()), SpectralDamage.get());
+                armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble(), 0));
+
+                AsyncDestroyTask.createDestroyingTask(damager, armorStand);
+                return;
+            }
+
+            Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(damager, targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage()), SpectralDamage.get());
 
             if(ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean()) {
-                AsyncHologramTask.createHologramTask(damager, armorStandId, targetLocation);
+                AsyncHologramTask.createHologramTask(damager, armorStand, targetLocation);
             }else{
-                AsyncDestroyTask.createDestroyingTask(damager, armorStandId);
+                AsyncDestroyTask.createDestroyingTask(damager, armorStand);
             }
 
 
