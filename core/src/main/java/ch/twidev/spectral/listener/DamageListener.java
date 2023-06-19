@@ -42,8 +42,10 @@ public class DamageListener implements Listener {
             // Create armor stand NMS entity
 
             if(TaskType.check() == TaskType.WORLD){
-                Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamage.get());
-                armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble(), 0));
+                boolean fallingAnimation = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean();
+
+                Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamage.get(), fallingAnimation);
+                if(fallingAnimation) armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble(), 0));
 
                 AsyncDestroyTask.createDestroyingTask(damager, armorStand);
                 return;

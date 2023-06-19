@@ -18,7 +18,7 @@ public class PacketsV1_16_R3 implements IPackets {
         PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
         World mcWorld = ((CraftWorld) player.getWorld()).getHandle();
 
-        EntityArmorStand armorStand = this.createEntity(location,format);
+        EntityArmorStand armorStand = this.createEntity(location,format,false);
 
         int armorStandID = armorStand.getId();
 
@@ -45,8 +45,8 @@ public class PacketsV1_16_R3 implements IPackets {
     }
 
     @Override
-    public org.bukkit.entity.Entity spawnHologram(Location location, double damage, String format, Plugin plugin) {
-        EntityArmorStand armorStand = this.createEntity(location, format);
+    public org.bukkit.entity.Entity spawnHologram(Location location, double damage, String format, Plugin plugin, boolean gravity) {
+        EntityArmorStand armorStand = this.createEntity(location, format, gravity);
         Class<?> nmsStandClass = net.minecraft.server.v1_16_R3.Entity.class;
         try {
             Field noClip = nmsStandClass.getDeclaredField("noclip");
@@ -66,11 +66,11 @@ public class PacketsV1_16_R3 implements IPackets {
         ((CraftWorld) entity.getWorld()).getHandle().removeEntity(((CraftEntity) entity).getHandle());
     }
 
-    public EntityArmorStand createEntity(Location location, String format) {
+    public EntityArmorStand createEntity(Location location, String format, boolean gravity) {
         World mcWorld = ((CraftWorld) location.getWorld()).getHandle();
         EntityArmorStand armorStand = new EntityArmorStand(mcWorld, location.getX(), location.getY(), location.getZ());
         armorStand.setSmall(true);
-        armorStand.setNoGravity(false);
+        armorStand.setNoGravity(!gravity);
         armorStand.setInvisible(true);
         armorStand.setCustomName(new ChatMessage(format));
         armorStand.setCustomNameVisible(true);

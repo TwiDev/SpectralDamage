@@ -16,7 +16,7 @@ public class PacketsV1_8_R3 implements IPackets {
     @Override
     public Entity spawnHologram(Player player, Location location, double damage, String format, Plugin plugin) {
         PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
-        EntityArmorStand armorStand = this.createEntity(location, format);
+        EntityArmorStand armorStand = this.createEntity(location, format, false);
 
         int armorStandID = armorStand.getId();
 
@@ -43,8 +43,8 @@ public class PacketsV1_8_R3 implements IPackets {
     }
 
     @Override
-    public Entity spawnHologram(Location location, double damage, String format, Plugin plugin) {
-        EntityArmorStand armorStand = this.createEntity(location, format);
+    public Entity spawnHologram(Location location, double damage, String format, Plugin plugin, boolean gravity) {
+        EntityArmorStand armorStand = this.createEntity(location, format, gravity);
         Class<?> nmsStandClass = net.minecraft.server.v1_8_R3.Entity.class;
         try {
             Field noClip = nmsStandClass.getDeclaredField("noclip");
@@ -64,11 +64,11 @@ public class PacketsV1_8_R3 implements IPackets {
         ((CraftWorld) entity.getWorld()).getHandle().removeEntity(((CraftEntity) entity).getHandle());
     }
 
-    public EntityArmorStand createEntity(Location location, String format) {
+    public EntityArmorStand createEntity(Location location, String format, boolean gravity) {
         World mcWorld = ((CraftWorld) location.getWorld()).getHandle();
         EntityArmorStand armorStand = new EntityArmorStand(mcWorld, location.getX(), location.getY(), location.getZ());
         armorStand.setSmall(true);
-        armorStand.setGravity(true);
+        armorStand.setGravity(gravity);
         armorStand.setInvisible(true);
         armorStand.setCustomName(format);
         armorStand.setCustomNameVisible(true);

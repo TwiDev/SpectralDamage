@@ -1,6 +1,5 @@
 package ch.twidev.spectral.nms;
 
-import ch.twidev.spectral.SpectralDamage;
 import org.bukkit.Bukkit;
 
 import java.util.regex.Matcher;

@@ -13,7 +13,7 @@ public interface IPackets {
 
     void destroyEntity(Player player, int entityId);
 
-    Entity spawnHologram(Location location, double damage, String format, Plugin plugin);
+    Entity spawnHologram(Location location, double damage, String format, Plugin plugin, boolean gravity);
 
     void destroyEntity(Entity entity);
 
