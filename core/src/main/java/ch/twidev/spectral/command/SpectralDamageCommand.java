@@ -69,8 +69,8 @@ public class SpectralDamageCommand implements CommandExecutor {
             commandSender.sendMessage("§8 - §b/spectraldamage reload §8- §cReload configuration");
         }
 
-        if (commandSender instanceof Player && (commandSender.hasPermission("spectraldamage.switch") || isOp)) {
-            commandSender.sendMessage("§8 - §b/spectraldamage switch §8- §cSwitch hologram visibility for the player who execute the command");
+        if (commandSender instanceof Player && (commandSender.hasPermission("spectraldamage.toggle") || isOp)) {
+            commandSender.sendMessage("§8 - §b/spectraldamage toggle §8- §cToggle hologram visibility for the player who execute the command");
         }
     }
 }

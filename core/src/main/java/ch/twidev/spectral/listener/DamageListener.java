@@ -8,7 +8,10 @@ import ch.twidev.spectral.tasks.AsyncHologramTask;
 import ch.twidev.spectral.tasks.TaskType;
 import ch.twidev.spectral.utils.DamageUtility;
 import ch.twidev.spectral.utils.StringUtils;
+import net.minecraft.server.v1_8_R3.EntityArmorStand;
 import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -45,7 +48,10 @@ public class DamageListener implements Listener {
                 boolean fallingAnimation = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean();
 
                 Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamage.get(), fallingAnimation);
-                if(fallingAnimation) armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble(), 0));
+                ArmorStand entityArmorStand = (ArmorStand) armorStand;
+                entityArmorStand.setGravity(fallingAnimation);
+
+                if(fallingAnimation) armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble()/1.8d, 0));
 
                 AsyncDestroyTask.createDestroyingTask(damager, armorStand);
                 return;
