@@ -55,7 +55,7 @@ public class PacketsV1_8_R3 implements IPackets {
         }
 
 
-        armorStand.world.addEntity(armorStand);
+        ((CraftWorld) location.getWorld()).getHandle().addEntity(armorStand);
         return armorStand.getBukkitEntity();
     }
 
