@@ -1,7 +1,7 @@
 package ch.twidev.spectral.config;
 
 public enum ConfigVars {
-    //The holograms are visible only to the player, if false the hologram will be visible to everyone
+    // The holograms are visible only to the player, if false the hologram will be visible to everyone
     SHOW_TO_DAMAGER_ONLY("showToDamagerOnly", true),
 
     // Maximum random coordinate on the X axis of the hologram location

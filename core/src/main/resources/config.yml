@@ -1,5 +1,8 @@
 # Config - Spectral Damage a plugin by TwiDev
 
+# The holograms are visible only to the player, if false the hologram will be visible to everyone
+showToDamagerOnly: true
+
 # Maximum random coordinate on the X axis of the hologram location (cannot be negative)
 offset_x: 1.25
 # Maximum random coordinate on the Y axis of the hologram location (can be negative)
@@ -17,6 +20,12 @@ acceleration: 4.0
 
 # Damage display format (placeholder %damage% will be replaced with damage value)
 damage_format: "&c- &4%damage% &cHP"
+
+# Defines if the critical damage should be displayed with the custom format
+damage_critical: true
+
+# Critical damage display format (placeholder %damage% will be replaced with damage value)
+damage_critical_format: "&c- &6&l%damage% &cHP"
 
 # hologram lifetime (Is fixed so that the hologram disappears after it is in the ground according to
 # at default initial speed and acceleration values)
