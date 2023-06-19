@@ -49,6 +49,7 @@ public class AsyncDestroyTask extends BukkitRunnable {
             });
         }
 
-        SpectralDamage.TASKS_ID.remove(this.getTaskId());
+        Integer id = getTaskId();
+        SpectralDamage.TASKS_ID.remove(id);
     }
 }

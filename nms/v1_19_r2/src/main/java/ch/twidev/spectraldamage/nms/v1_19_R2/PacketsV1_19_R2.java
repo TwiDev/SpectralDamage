@@ -79,6 +79,7 @@ public class PacketsV1_19_R2 implements IPackets {
         armorStand.j(true);
         armorStand.b(IChatBaseComponent.a(format));
         armorStand.n(true);
+        armorStand.e(!gravity);
 
         return armorStand;
     }
