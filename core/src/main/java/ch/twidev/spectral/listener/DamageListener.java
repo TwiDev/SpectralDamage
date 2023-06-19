@@ -6,6 +6,7 @@ import ch.twidev.spectral.config.ConfigVars;
 import ch.twidev.spectral.tasks.AsyncDestroyTask;
 import ch.twidev.spectral.tasks.AsyncHologramTask;
 import ch.twidev.spectral.tasks.TaskType;
+import ch.twidev.spectral.utils.DamageUtility;
 import ch.twidev.spectral.utils.StringUtils;
 import org.bukkit.Location;
 import org.bukkit.entity.Creature;
@@ -37,17 +38,20 @@ public class DamageListener implements Listener {
 
             Location targetLocation = target.getLocation().add(2*offsetX*RANDOM.nextDouble() - offsetX, offsetY - 0.4d, 2*offsetZ*RANDOM.nextDouble() - offsetZ);
 
+            boolean isCritical = DamageUtility.isCritical(damager);
             // Create armor stand NMS entity
 
             if(TaskType.check() == TaskType.WORLD){
-                Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage()), SpectralDamage.get());
+                Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamage.get());
                 armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble(), 0));
 
                 AsyncDestroyTask.createDestroyingTask(damager, armorStand);
                 return;
             }
 
-            Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(damager, targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage()), SpectralDamage.get());
+            if(SpectralDamage.PLAYER_VISIBILITY.contains(damager)) return;
+
+            Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(damager, targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamage.get());
 
             if(ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean()) {
                 AsyncHologramTask.createHologramTask(damager, armorStand, targetLocation);

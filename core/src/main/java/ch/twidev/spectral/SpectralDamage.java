@@ -12,12 +12,15 @@ import ch.twidev.spectraldamage.nms.common.IPackets;
 import com.avaje.ebean.validation.NotNull;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,6 +28,8 @@ import java.util.logging.Logger;
  * @author TwiDev
  */
 public class SpectralDamage extends JavaPlugin {
+
+    public static final List<Player> PLAYER_VISIBILITY = new ArrayList<>();
 
     public static final List<Integer> TASKS_ID = new ArrayList<>();
 
