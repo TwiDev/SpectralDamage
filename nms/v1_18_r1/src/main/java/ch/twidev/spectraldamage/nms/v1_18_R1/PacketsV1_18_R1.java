@@ -12,7 +12,9 @@ import net.minecraft.world.level.World;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_18_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.Plugin;
 
 public class PacketsV1_18_R1 implements IPackets {
@@ -21,11 +23,7 @@ public class PacketsV1_18_R1 implements IPackets {
         PlayerConnection connection = ((CraftPlayer) player).getHandle().b;
         World mcWorld = ((CraftWorld) player.getWorld()).getHandle();
 
-        EntityArmorStand armorStand = new EntityArmorStand(mcWorld, location.getX(), location.getY(), location.getZ());
-        armorStand.a(true);
-        armorStand.j(true);
-        armorStand.a(new ChatMessage(format));
-        armorStand.n(true);
+        EntityArmorStand armorStand = createEntity(location, format);
 
         int armorStandID = armorStand.ae();
 
@@ -45,6 +43,30 @@ public class PacketsV1_18_R1 implements IPackets {
         );
         ((CraftPlayer) player).getHandle().b.a(packetPlayOutRelEntityMove);
 
+    }
+
+    @Override
+    public org.bukkit.entity.Entity spawnHologram(Location location, double damage, String format, Plugin plugin) {
+        EntityArmorStand armorStand = this.createEntity(location, format);
+
+        armorStand.W().addFreshEntity(armorStand, CreatureSpawnEvent.SpawnReason.CUSTOM);
+        return armorStand.getBukkitEntity();
+    }
+
+    @Override
+    public void destroyEntity(Entity entity) {
+
+    }
+
+    public EntityArmorStand createEntity(Location location, String format) {
+        World mcWorld = ((CraftWorld) location.getWorld()).getHandle();
+        EntityArmorStand armorStand = new EntityArmorStand(mcWorld, location.getX(), location.getY(), location.getZ());
+        armorStand.a(true);
+        armorStand.j(true);
+        armorStand.a(new ChatMessage(format));
+        armorStand.n(true);
+
+        return armorStand;
     }
 
     @Override
