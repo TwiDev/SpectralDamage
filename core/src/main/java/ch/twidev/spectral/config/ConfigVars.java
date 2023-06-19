@@ -1,6 +1,8 @@
 package ch.twidev.spectral.config;
 
 public enum ConfigVars {
+    //The holograms are visible only to the player, if false the hologram will be visible to everyone
+    SHOW_TO_DAMAGER_ONLY("showToDamagerOnly", true),
 
     // Maximum random coordinate on the X axis of the hologram location
     HOLOGRAM_OFFSET_X("offset_x", 1.25d),
@@ -14,6 +16,10 @@ public enum ConfigVars {
     HOLOGRAM_ACCELERATION("acceleration", 4),
     // Damage display format
     HOLOGRAM_DAMAGE_FORMAT("damage_format", "&c- &4%damage% &cHP"),
+    // Defines if the critical damage should be displayed with the custom format
+    DETECT_CRITICAL_DAMAGE("damage_critical", true),
+    // Critical damage display format
+    HOLOGRAM_DAMAGE_CRITICAL_FORMAT("damage_critical_format", "&c- &6&l%damage% &cHP"),
     /**
      * hologram lifetime (Is fixed so that the hologram disappears after it is in the ground according to
      * at default initial speed and acceleration values)
