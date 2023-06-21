@@ -1,6 +1,6 @@
 name: SpectralDamage
 author: TwiDev
-version: 2.1.0
+version: DEV
 main: ch.twidev.spectral.SpectralDamage
 
 commands:

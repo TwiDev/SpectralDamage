@@ -41,6 +41,7 @@ public class SpectralDamagePlugin extends JavaPlugin {
     public void onEnable() {
         INSTANCE = this;
 
+        log("[Spectral Damage] loading plugin version (v " + this.getDescription().getVersion() + ").");
         log("#=============[SPECTRAL DAMAGE IS ENABLED]=============#");
         log("# Spectral Damage is now loading. Please read          #");
         log("# carefully all outputs coming from it.                #");
