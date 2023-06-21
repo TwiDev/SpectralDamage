@@ -1,6 +1,6 @@
-package ch.twidev.spectral.config;
+package ch.twidev.spectraldamage.config;
 
-import ch.twidev.spectral.SpectralDamagePlugin;
+import ch.twidev.spectraldamage.SpectralDamagePlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashMap;

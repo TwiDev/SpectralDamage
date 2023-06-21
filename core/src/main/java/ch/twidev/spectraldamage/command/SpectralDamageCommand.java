@@ -1,9 +1,9 @@
-package ch.twidev.spectral.command;
+package ch.twidev.spectraldamage.command;
 
-import ch.twidev.spectral.SpectralDamagePlugin;
-import ch.twidev.spectral.config.ConfigManager;
-import ch.twidev.spectral.config.ConfigVars;
-import ch.twidev.spectral.tasks.TaskType;
+import ch.twidev.spectraldamage.SpectralDamagePlugin;
+import ch.twidev.spectraldamage.config.ConfigManager;
+import ch.twidev.spectraldamage.config.ConfigVars;
+import ch.twidev.spectraldamage.tasks.TaskType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

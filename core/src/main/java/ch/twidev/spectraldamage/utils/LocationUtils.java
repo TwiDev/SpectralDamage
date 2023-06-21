@@ -1,4 +1,4 @@
-package ch.twidev.spectral.utils;
+package ch.twidev.spectraldamage.utils;
 
 public class LocationUtils {
 

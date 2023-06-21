@@ -1,8 +1,8 @@
-package ch.twidev.spectral.tasks;
+package ch.twidev.spectraldamage.tasks;
 
-import ch.twidev.spectral.SpectralDamagePlugin;
-import ch.twidev.spectral.config.ConfigManager;
-import ch.twidev.spectral.config.ConfigVars;
+import ch.twidev.spectraldamage.SpectralDamagePlugin;
+import ch.twidev.spectraldamage.config.ConfigManager;
+import ch.twidev.spectraldamage.config.ConfigVars;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;

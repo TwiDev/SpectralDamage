@@ -1,7 +1,7 @@
-package ch.twidev.spectral.utils;
+package ch.twidev.spectraldamage.utils;
 
-import ch.twidev.spectral.config.ConfigManager;
-import ch.twidev.spectral.config.ConfigVars;
+import ch.twidev.spectraldamage.config.ConfigManager;
+import ch.twidev.spectraldamage.config.ConfigVars;
 
 public class StringUtils {
 

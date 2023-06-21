@@ -1,11 +1,11 @@
-package ch.twidev.spectral;
+package ch.twidev.spectraldamage;
 
-import ch.twidev.spectral.config.ConfigManager;
-import ch.twidev.spectral.config.ConfigVars;
-import ch.twidev.spectral.tasks.AsyncDestroyTask;
-import ch.twidev.spectral.tasks.AsyncHologramTask;
-import ch.twidev.spectral.tasks.TaskType;
-import ch.twidev.spectral.utils.StringUtils;
+import ch.twidev.spectraldamage.config.ConfigManager;
+import ch.twidev.spectraldamage.config.ConfigVars;
+import ch.twidev.spectraldamage.tasks.AsyncDestroyTask;
+import ch.twidev.spectraldamage.tasks.AsyncHologramTask;
+import ch.twidev.spectraldamage.tasks.TaskType;
+import ch.twidev.spectraldamage.utils.StringUtils;
 import ch.twidev.spectraldamage.api.SpectralDamage;
 import ch.twidev.spectraldamage.nms.common.IPackets;
 import org.bukkit.Location;

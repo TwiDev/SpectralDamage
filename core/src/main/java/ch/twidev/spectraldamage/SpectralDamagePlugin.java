@@ -1,13 +1,13 @@
-package ch.twidev.spectral;
+package ch.twidev.spectraldamage;
 
-import ch.twidev.spectral.command.SpectralDamageCommand;
-import ch.twidev.spectral.config.ConfigManager;
-import ch.twidev.spectral.config.ConfigVars;
-import ch.twidev.spectral.exception.PluginEnableException;
-import ch.twidev.spectral.listener.DamageListener;
-import ch.twidev.spectral.nms.NMSManagerFactory;
-import ch.twidev.spectral.nms.NMSVersion;
-import ch.twidev.spectral.utils.UpdateChecker;
+import ch.twidev.spectraldamage.command.SpectralDamageCommand;
+import ch.twidev.spectraldamage.config.ConfigManager;
+import ch.twidev.spectraldamage.config.ConfigVars;
+import ch.twidev.spectraldamage.exception.PluginEnableException;
+import ch.twidev.spectraldamage.listener.DamageListener;
+import ch.twidev.spectraldamage.nms.NMSManagerFactory;
+import ch.twidev.spectraldamage.nms.NMSVersion;
+import ch.twidev.spectraldamage.utils.UpdateChecker;
 import ch.twidev.spectraldamage.nms.common.IPackets;
 import com.avaje.ebean.validation.NotNull;
 import org.bukkit.Bukkit;

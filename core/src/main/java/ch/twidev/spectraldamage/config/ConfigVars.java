@@ -1,4 +1,4 @@
-package ch.twidev.spectral.config;
+package ch.twidev.spectraldamage.config;
 
 public enum ConfigVars {
 

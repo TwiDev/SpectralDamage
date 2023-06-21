@@ -1,4 +1,4 @@
-package ch.twidev.spectral.nms;
+package ch.twidev.spectraldamage.nms;
 
 import org.bukkit.Bukkit;
 

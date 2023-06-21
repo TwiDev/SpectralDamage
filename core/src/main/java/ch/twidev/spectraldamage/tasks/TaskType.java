@@ -1,7 +1,7 @@
-package ch.twidev.spectral.tasks;
+package ch.twidev.spectraldamage.tasks;
 
-import ch.twidev.spectral.config.ConfigManager;
-import ch.twidev.spectral.config.ConfigVars;
+import ch.twidev.spectraldamage.config.ConfigManager;
+import ch.twidev.spectraldamage.config.ConfigVars;
 
 public enum TaskType {
 

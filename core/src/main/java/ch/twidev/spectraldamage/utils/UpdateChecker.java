@@ -1,4 +1,4 @@
-package ch.twidev.spectral.utils;
+package ch.twidev.spectraldamage.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;

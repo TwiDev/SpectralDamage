@@ -1,23 +1,18 @@
-package ch.twidev.spectral.listener;
+package ch.twidev.spectraldamage.listener;
 
-import ch.twidev.spectral.SpectralDamagePlugin;
-import ch.twidev.spectral.config.ConfigManager;
-import ch.twidev.spectral.config.ConfigVars;
-import ch.twidev.spectral.tasks.AsyncDestroyTask;
-import ch.twidev.spectral.tasks.AsyncHologramTask;
-import ch.twidev.spectral.tasks.TaskType;
-import ch.twidev.spectral.utils.DamageUtility;
-import ch.twidev.spectral.utils.StringUtils;
+import ch.twidev.spectraldamage.SpectralDamagePlugin;
+import ch.twidev.spectraldamage.config.ConfigManager;
+import ch.twidev.spectraldamage.config.ConfigVars;
+import ch.twidev.spectraldamage.tasks.TaskType;
+import ch.twidev.spectraldamage.utils.DamageUtility;
 import ch.twidev.spectraldamage.api.SpectralDamage;
 import org.bukkit.Location;
-import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.util.Vector;
 
 import java.util.Random;
 

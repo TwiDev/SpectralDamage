@@ -1,6 +1,6 @@
-package ch.twidev.spectral.exception;
+package ch.twidev.spectraldamage.exception;
 
-import ch.twidev.spectral.SpectralDamagePlugin;
+import ch.twidev.spectraldamage.SpectralDamagePlugin;
 
 public class PluginEnableException extends RuntimeException{
 
