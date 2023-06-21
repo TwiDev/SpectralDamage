@@ -7,6 +7,7 @@ import ch.twidev.spectraldamage.tasks.TaskType;
 import ch.twidev.spectraldamage.utils.DamageUtility;
 import ch.twidev.spectraldamage.api.SpectralDamage;
 import org.bukkit.Location;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -22,6 +23,8 @@ public class DamageListener implements Listener {
 
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
+        if(event.getEntity() instanceof ArmorStand) return;
+
         if(event.getDamager() instanceof Player) {
             if(event.getEntity() instanceof Player && !ConfigManager.CONFIG_VALUES.get(ConfigVars.PLAYER_AFFECTED).asBoolean()) return;
             if(event.getEntity() instanceof Creature && !ConfigManager.CONFIG_VALUES.get(ConfigVars.ENTITIES_AFFECTED).asBoolean()) return;
@@ -40,31 +43,12 @@ public class DamageListener implements Listener {
             boolean fallingAnimation = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean();
 
             if(TaskType.check() == TaskType.WORLD){
-                /*Entity armorStand = SpectralDamagePlugin.get().getPacketManager().spawnHologram(targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamagePlugin.get(), fallingAnimation);
-                ArmorStand entityArmorStand = (ArmorStand) armorStand;
-                entityArmorStand.setGravity(fallingAnimation);
-
-                if(fallingAnimation) armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble()/1.8d, 0));
-
-                AsyncDestroyTask.createDestroyingTask(damager, armorStand);*/
                 SpectralDamage.getInstance().spawnDamageIndicator(targetLocation, isCritical, Math.toIntExact(Math.round(event.getDamage())), fallingAnimation);
                 return;
             }
 
             if(SpectralDamagePlugin.PLAYER_VISIBILITY.contains(damager)) return;
             SpectralDamage.getInstance().spawnDamageIndicator(damager, targetLocation, isCritical, Math.toIntExact(Math.round(event.getDamage())), fallingAnimation);
-
-           /* Entity armorStand = SpectralDamagePlugin.get().getPacketManager().spawnHologram(damager, targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamagePlugin.get());
-
-            if(ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean()) {
-                AsyncHologramTask.createHologramTask(damager, armorStand, targetLocation);
-            }else{
-                AsyncDestroyTask.createDestroyingTask(damager, armorStand);
-            }*/
-
-
-
         }
     }
-
 }
