@@ -1,6 +1,6 @@
 package ch.twidev.spectral.command;
 
-import ch.twidev.spectral.SpectralDamage;
+import ch.twidev.spectral.SpectralDamagePlugin;
 import ch.twidev.spectral.config.ConfigManager;
 import ch.twidev.spectral.config.ConfigVars;
 import ch.twidev.spectral.tasks.TaskType;
@@ -20,7 +20,7 @@ public class SpectralDamageCommand implements CommandExecutor {
             switch (strings[0]) {
                 case "reload":
                     if (commandSender.hasPermission("spectraldamage.reload") || isOp) {
-                        SpectralDamage.get().reloadConfig();
+                        SpectralDamagePlugin.get().reloadConfig();
                         ConfigManager.load();
                             commandSender.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_CONFIG_RELOADED));
                     }
@@ -39,11 +39,11 @@ public class SpectralDamageCommand implements CommandExecutor {
                         }
 
                         if (commandSender.hasPermission("spectraldamage.toggle") || isOp) {
-                            if(SpectralDamage.PLAYER_VISIBILITY.contains(player)) {
-                                SpectralDamage.PLAYER_VISIBILITY.remove(player);
+                            if(SpectralDamagePlugin.PLAYER_VISIBILITY.contains(player)) {
+                                SpectralDamagePlugin.PLAYER_VISIBILITY.remove(player);
                                 player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_ON));
                             }else{
-                                SpectralDamage.PLAYER_VISIBILITY.add(player);
+                                SpectralDamagePlugin.PLAYER_VISIBILITY.add(player);
                                 player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_OFF));
                             }
                         }

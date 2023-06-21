@@ -1,6 +1,6 @@
 package ch.twidev.spectral.listener;
 
-import ch.twidev.spectral.SpectralDamage;
+import ch.twidev.spectral.SpectralDamagePlugin;
 import ch.twidev.spectral.config.ConfigManager;
 import ch.twidev.spectral.config.ConfigVars;
 import ch.twidev.spectral.tasks.AsyncDestroyTask;
@@ -8,9 +8,7 @@ import ch.twidev.spectral.tasks.AsyncHologramTask;
 import ch.twidev.spectral.tasks.TaskType;
 import ch.twidev.spectral.utils.DamageUtility;
 import ch.twidev.spectral.utils.StringUtils;
-import net.minecraft.server.v1_8_R3.EntityArmorStand;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Creature;
 import org.bukkit.entity.Entity;
@@ -47,7 +45,7 @@ public class DamageListener implements Listener {
             if(TaskType.check() == TaskType.WORLD){
                 boolean fallingAnimation = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean();
 
-                Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamage.get(), fallingAnimation);
+                Entity armorStand = SpectralDamagePlugin.get().getPacketManager().spawnHologram(targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamagePlugin.get(), fallingAnimation);
                 ArmorStand entityArmorStand = (ArmorStand) armorStand;
                 entityArmorStand.setGravity(fallingAnimation);
 
@@ -57,9 +55,9 @@ public class DamageListener implements Listener {
                 return;
             }
 
-            if(SpectralDamage.PLAYER_VISIBILITY.contains(damager)) return;
+            if(SpectralDamagePlugin.PLAYER_VISIBILITY.contains(damager)) return;
 
-            Entity armorStand = SpectralDamage.get().getPacketManager().spawnHologram(damager, targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamage.get());
+            Entity armorStand = SpectralDamagePlugin.get().getPacketManager().spawnHologram(damager, targetLocation.add(2*offsetX*RANDOM.nextDouble() - 1, offsetY, 2*offsetZ*RANDOM.nextDouble() - 1), event.getDamage(), StringUtils.getDamageFormat(event.getDamage(), isCritical), SpectralDamagePlugin.get());
 
             if(ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean()) {
                 AsyncHologramTask.createHologramTask(damager, armorStand, targetLocation);

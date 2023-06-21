@@ -1,6 +1,6 @@
 package ch.twidev.spectral.exception;
 
-import ch.twidev.spectral.SpectralDamage;
+import ch.twidev.spectral.SpectralDamagePlugin;
 
 public class PluginEnableException extends RuntimeException{
 
@@ -10,7 +10,7 @@ public class PluginEnableException extends RuntimeException{
 
     @Override
     public void printStackTrace() {
-        SpectralDamage.get().stop();
+        SpectralDamagePlugin.get().stop();
 
         super.printStackTrace();
     }

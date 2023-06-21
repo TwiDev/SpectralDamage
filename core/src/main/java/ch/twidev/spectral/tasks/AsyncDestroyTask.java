@@ -1,6 +1,6 @@
 package ch.twidev.spectral.tasks;
 
-import ch.twidev.spectral.SpectralDamage;
+import ch.twidev.spectral.SpectralDamagePlugin;
 import ch.twidev.spectral.config.ConfigManager;
 import ch.twidev.spectral.config.ConfigVars;
 import org.bukkit.Bukkit;
@@ -8,9 +8,11 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import javax.annotation.Nullable;
+
 public class AsyncDestroyTask extends BukkitRunnable {
 
-    public static AsyncDestroyTask createDestroyingTask(Player player, Entity entity) {
+    public static AsyncDestroyTask createDestroyingTask(@Nullable Player player, Entity entity) {
         return new AsyncDestroyTask(player, entity);
     }
 
@@ -25,31 +27,31 @@ public class AsyncDestroyTask extends BukkitRunnable {
      * @param player player to send packet
      * @param entity entity to remove
      */
-    public AsyncDestroyTask(Player player, Entity entity) {
+    public AsyncDestroyTask(@Nullable Player player, Entity entity) {
         this.player = player;
         this.entity = entity;
         this.taskType = TaskType.check();
 
-        this.runTaskLaterAsynchronously(SpectralDamage.get(), ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_LIVING_TIME).asInt());
+        this.runTaskLaterAsynchronously(SpectralDamagePlugin.get(), ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_LIVING_TIME).asInt());
 
         // Register the task
-        SpectralDamage.TASKS_ID.add(this.getTaskId());
+        SpectralDamagePlugin.TASKS_ID.add(this.getTaskId());
     }
 
     @Override
     public void run() {
         if(taskType == TaskType.PACKET) {
-            if (player.isOnline()) {
-                SpectralDamage.get().getPacketManager().destroyEntity(player, entity.getEntityId());
+            if (player!= null && player.isOnline()) {
+                SpectralDamagePlugin.get().getPacketManager().destroyEntity(player, entity.getEntityId());
             }
         }else{
-            Bukkit.getScheduler().runTask(SpectralDamage.get(), () -> {
-                SpectralDamage.get().getPacketManager().destroyEntity(entity);
+            Bukkit.getScheduler().runTask(SpectralDamagePlugin.get(), () -> {
+                SpectralDamagePlugin.get().getPacketManager().destroyEntity(entity);
                 entity.remove();
             });
         }
 
         Integer id = getTaskId();
-        SpectralDamage.TASKS_ID.remove(id);
+        SpectralDamagePlugin.TASKS_ID.remove(id);
     }
 }

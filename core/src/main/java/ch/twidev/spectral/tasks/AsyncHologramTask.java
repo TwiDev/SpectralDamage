@@ -1,10 +1,9 @@
 package ch.twidev.spectral.tasks;
 
-import ch.twidev.spectral.SpectralDamage;
+import ch.twidev.spectral.SpectralDamagePlugin;
 import ch.twidev.spectral.config.ConfigManager;
 import ch.twidev.spectral.config.ConfigVars;
 
-import ch.twidev.spectral.utils.LocationUtils;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -45,10 +44,10 @@ public class AsyncHologramTask extends BukkitRunnable {
         this.initialLocation = initialLocation;
         this.taskType = TaskType.check();
 
-        this.runTaskTimerAsynchronously(SpectralDamage.get(),0,1);
+        this.runTaskTimerAsynchronously(SpectralDamagePlugin.get(),0,1);
 
         // Register the task
-        SpectralDamage.TASKS_ID.add(this.getTaskId());
+        SpectralDamagePlugin.TASKS_ID.add(this.getTaskId());
     }
 
     @Override
@@ -61,14 +60,14 @@ public class AsyncHologramTask extends BukkitRunnable {
         double time = tick/20d;
         double dy = INITIAL_SPEED*time - 0.5d*ACCELERATION*Math.pow(time, 2);
 
-        SpectralDamage.get().getPacketManager().relEntityMove(player, armorStand.getEntityId(),
+        SpectralDamagePlugin.get().getPacketManager().relEntityMove(player, armorStand.getEntityId(),
                 initialLocation.getY(),
                 dy,
                 false);
 
 
         if(tick >= DURATION) {
-            SpectralDamage.get().getPacketManager().destroyEntity(player, armorStand.getEntityId());
+            SpectralDamagePlugin.get().getPacketManager().destroyEntity(player, armorStand.getEntityId());
             this.cancel();
 
         }
@@ -78,7 +77,7 @@ public class AsyncHologramTask extends BukkitRunnable {
     @Override
     public synchronized void cancel() throws IllegalStateException {
         Integer id = this.getTaskId();
-        SpectralDamage.TASKS_ID.remove(id);
+        SpectralDamagePlugin.TASKS_ID.remove(id);
 
         super.cancel();
     }

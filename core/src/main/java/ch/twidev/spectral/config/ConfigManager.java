@@ -1,6 +1,6 @@
 package ch.twidev.spectral.config;
 
-import ch.twidev.spectral.SpectralDamage;
+import ch.twidev.spectral.SpectralDamagePlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashMap;
@@ -11,7 +11,7 @@ public class ConfigManager {
 
     public static void load() {
         CONFIG_VALUES.clear();
-        FileConfiguration fileConfiguration = SpectralDamage.get().getConfig();
+        FileConfiguration fileConfiguration = SpectralDamagePlugin.get().getConfig();
 
         try {
             for (ConfigVars var : ConfigVars.values()) {
@@ -21,13 +21,13 @@ public class ConfigManager {
                     ConfigManager.CONFIG_VALUES.put(var, new ConfigValue(fileConfiguration.get(path)));
                 } else {
                     ConfigManager.CONFIG_VALUES.put(var, new ConfigValue(var.getDefaultValue()));
-                    SpectralDamage.LOGGER.warning("The configurable value "+var.getConfigName()+" doesn't seem to exist, let's use the default value");
+                    SpectralDamagePlugin.LOGGER.warning("The configurable value "+var.getConfigName()+" doesn't seem to exist, let's use the default value");
                 }
             }
         } catch (Exception e){
             e.printStackTrace();
-            SpectralDamage.LOGGER.severe("The configuration file did not load correctly!");
-            SpectralDamage.get().stop();
+            SpectralDamagePlugin.LOGGER.severe("The configuration file did not load correctly!");
+            SpectralDamagePlugin.get().stop();
         }
 
     }

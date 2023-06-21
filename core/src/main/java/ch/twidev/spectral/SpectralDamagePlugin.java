@@ -2,7 +2,6 @@ package ch.twidev.spectral;
 
 import ch.twidev.spectral.command.SpectralDamageCommand;
 import ch.twidev.spectral.config.ConfigManager;
-import ch.twidev.spectral.config.ConfigValue;
 import ch.twidev.spectral.config.ConfigVars;
 import ch.twidev.spectral.exception.PluginEnableException;
 import ch.twidev.spectral.listener.DamageListener;
@@ -12,23 +11,19 @@ import ch.twidev.spectral.utils.UpdateChecker;
 import ch.twidev.spectraldamage.nms.common.IPackets;
 import com.avaje.ebean.validation.NotNull;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-import org.bukkit.event.server.PluginEnableEvent;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * @author TwiDev
  */
-public class SpectralDamage extends JavaPlugin {
+public class SpectralDamagePlugin extends JavaPlugin {
 
     public static final List<Player> PLAYER_VISIBILITY = new ArrayList<>();
 
@@ -36,9 +31,11 @@ public class SpectralDamage extends JavaPlugin {
 
     public static final Logger LOGGER = Logger.getLogger("SpectralDamage");
 
-    private static SpectralDamage INSTANCE;
+    private static SpectralDamagePlugin INSTANCE;
 
     private IPackets packetManager;
+
+    private CoreAPI api;
 
     @Override
     public void onEnable() {
@@ -76,7 +73,7 @@ public class SpectralDamage extends JavaPlugin {
         if(ConfigManager.CONFIG_VALUES.get(ConfigVars.UPDATE_CHECKER).asBoolean()) {
             log("[SPECTRAL DAMAGE] Checking for a new update ...");
             new UpdateChecker(this, 110551).getVersion(version -> {
-                Bukkit.getScheduler().runTaskLater(SpectralDamage.get(), () -> {
+                Bukkit.getScheduler().runTaskLater(SpectralDamagePlugin.get(), () -> {
                     if (this.getDescription().getVersion().equals(version)) {
                         getLogger().info("There is not a new update available.");
                     } else {
@@ -91,6 +88,11 @@ public class SpectralDamage extends JavaPlugin {
             });
         }
 
+        this.api = new CoreAPI(this);
+    }
+
+    public CoreAPI getAPI() {
+        return api;
     }
 
     @NotNull
@@ -112,7 +114,7 @@ public class SpectralDamage extends JavaPlugin {
         this.setEnabled(false);
     }
 
-    public static SpectralDamage get() {
+    public static SpectralDamagePlugin get() {
         return INSTANCE;
     }
 
