@@ -65,7 +65,7 @@ public class SpectralDamageCommand implements CommandExecutor {
     public void sendDefaultHelp(CommandSender commandSender) {
         boolean isOp = commandSender.isOp();
 
-        commandSender.sendMessage("§c§lSpectralDamage §8- §7A damage indicator plugin §8(v " + SpectralDamagePlugin.get().getDescription().getVersion() + ")");
+        commandSender.sendMessage("§c§lSpectralDamage §8- §7A damage indicator plugin §8(v" + SpectralDamagePlugin.get().getDescription().getVersion() + ")");
         commandSender.sendMessage("§7Created by §bTwiDev §8(§bhttps://github.com/twidev§8)");
 
         if (commandSender.hasPermission("spectraldamage.reload") || isOp) {

@@ -12,6 +12,8 @@ public abstract class SpectralDamage {
     private final JavaPlugin plugin;
 
     public SpectralDamage(JavaPlugin plugin) {
+        instance = this;
+
         this.plugin = plugin;
     }
 
