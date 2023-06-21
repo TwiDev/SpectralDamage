@@ -4,7 +4,6 @@ import ch.twidev.spectral.SpectralDamage;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 public class ConfigManager {
 
@@ -31,6 +30,10 @@ public class ConfigManager {
             SpectralDamage.get().stop();
         }
 
+    }
+
+    public static String parseString(ConfigVars configVars) {
+        return CONFIG_VALUES.get(configVars).asString().replaceAll("&", "§");
     }
 
 }

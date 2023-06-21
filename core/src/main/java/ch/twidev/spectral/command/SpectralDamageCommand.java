@@ -2,6 +2,7 @@ package ch.twidev.spectral.command;
 
 import ch.twidev.spectral.SpectralDamage;
 import ch.twidev.spectral.config.ConfigManager;
+import ch.twidev.spectral.config.ConfigVars;
 import ch.twidev.spectral.tasks.TaskType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,13 +14,15 @@ public class SpectralDamageCommand implements CommandExecutor {
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         boolean isOp = commandSender.isOp();
 
+        final String prefix = ConfigManager.parseString(ConfigVars.MESSAGE_PREFIX);
+
         if(strings.length >= 1) {
             switch (strings[0]) {
                 case "reload":
                     if (commandSender.hasPermission("spectraldamage.reload") || isOp) {
                         SpectralDamage.get().reloadConfig();
                         ConfigManager.load();
-                        commandSender.sendMessage("§c§lSpectralDamage §8- §aConfig file reloaded successfully!");
+                            commandSender.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_CONFIG_RELOADED));
                     }
 
                     break;
@@ -28,20 +31,20 @@ public class SpectralDamageCommand implements CommandExecutor {
                         Player player = (Player) commandSender;
 
                         if(TaskType.check() == TaskType.WORLD) {
-                            player.sendMessage("§c§lSpectralDamage §8- §cImpossible to change the visibility of the damage indicators because they are by default visible to everyone.");
+                            player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_CANNOT_TOGGLE_INDICATOR));
                             if(isOp) {
                                 player.sendMessage("§7§oTo change this modify the plugin configuration value ShowOnlyToDamager to true §8(Message only visible to OPs");
                             }
                             return true;
                         }
 
-                        if (commandSender.hasPermission("spectraldamage.switch") || isOp) {
+                        if (commandSender.hasPermission("spectraldamage.toggle") || isOp) {
                             if(SpectralDamage.PLAYER_VISIBILITY.contains(player)) {
                                 SpectralDamage.PLAYER_VISIBILITY.remove(player);
-                                player.sendMessage("§c§lSpectralDamage §8- §aThe visibility of damage indicators has been reactivated!");
+                                player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_ON));
                             }else{
                                 SpectralDamage.PLAYER_VISIBILITY.add(player);
-                                player.sendMessage("§c§lSpectralDamage §8- §cThe visibility of damage indicators has been disabled!");
+                                player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_OFF));
                             }
                         }
 
