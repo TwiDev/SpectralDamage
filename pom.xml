@@ -43,6 +43,11 @@
         <dependencies>
             <dependency>
                 <groupId>${project.groupId}</groupId>
+                <artifactId>spectraldamage-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
                 <artifactId>spectraldamage-core</artifactId>
                 <version>${project.version}</version>
             </dependency>

@@ -50,6 +50,7 @@
             <groupId>ch.twidev.spectraldamage</groupId>
             <artifactId>spectraldamage-api</artifactId>
             <version>${global.version}</version>
+            <scope>compile</scope>
         </dependency>
         <!--<dependency>
             <groupId>org.spigotmc</groupId>
