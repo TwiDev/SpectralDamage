@@ -10,6 +10,7 @@
     </parent>
 
     <groupId>ch.twidev.spectraldamage</groupId>
+    <version>${global.version}</version>
     <artifactId>spectraldamage-api</artifactId>
     <name>Spectral Damage API</name>
 

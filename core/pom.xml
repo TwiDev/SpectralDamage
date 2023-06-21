@@ -12,6 +12,7 @@
     <groupId>ch.twidev.spectraldamage</groupId>
     <name>Spectral Damage Core</name>
     <artifactId>spectraldamage-core</artifactId>
+    <version>${global.version}</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -48,7 +49,7 @@
         <dependency>
             <groupId>ch.twidev.spectraldamage</groupId>
             <artifactId>spectraldamage-api</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>${global.version}</version>
         </dependency>
         <!--<dependency>
             <groupId>org.spigotmc</groupId>

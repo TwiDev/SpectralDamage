@@ -11,6 +11,7 @@
 
     <artifactId>spectraldamage-nms-common</artifactId>
     <name>SpectralDamage NMS Common</name>
+    <version>${global.version}</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
