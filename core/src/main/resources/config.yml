@@ -7,11 +7,11 @@ update_checker: true
 showToDamagerOnly: true
 
 # Maximum random coordinate on the X axis of the hologram location (cannot be negative)
-offset_x: 1.25
+offset_x: 1.35
 # Maximum random coordinate on the Y axis of the hologram location (can be negative)
 offset_y: 0.8
 # Maximum random coordinate on the Z axis of the hologram location (cannot be negative)
-offset_z: 1.25
+offset_z: 1.35
 
 falling_animation: true
 
