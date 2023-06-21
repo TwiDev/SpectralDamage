@@ -1,6 +1,7 @@
 package ch.twidev.spectraldamage.api;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -18,28 +19,28 @@ public abstract class SpectralDamage {
         return plugin;
     }
 
-    public abstract void spawnDamageIndicator(Player player, Location location,boolean critical, int damage, boolean falling);
+    public abstract Entity spawnDamageIndicator(Player player, Location location, boolean critical, int damage, boolean falling);
 
-    public abstract void spawnDamageIndicator(Player player, Location location, boolean critical, int damage);
+    public abstract Entity spawnDamageIndicator(Player player, Location location, boolean critical, int damage);
 
-    public abstract void spawnDamageIndicator(Location location, boolean critical, int damage, boolean falling);
+    public abstract Entity spawnDamageIndicator(Location location, boolean critical, int damage, boolean falling);
 
-    public abstract void spawnDamageIndicator(Location location, boolean critical, int damage);
+    public abstract Entity spawnDamageIndicator(Location location, boolean critical, int damage);
 
-    public void spawnDamageIndicator(Player player, Location location, int damage, boolean falling) {
-        this.spawnDamageIndicator(player, location, false, damage, falling);
+    public Entity spawnDamageIndicator(Player player, Location location, int damage, boolean falling) {
+        return this.spawnDamageIndicator(player, location, false, damage, falling);
     }
 
-    public void spawnDamageIndicator(Player player, Location location, int damage) {
-        this.spawnDamageIndicator(player, location, false, damage);
+    public Entity spawnDamageIndicator(Player player, Location location, int damage) {
+        return this.spawnDamageIndicator(player, location, false, damage);
     }
 
-    public void spawnDamageIndicator(Location location, int damage, boolean falling) {
-        this.spawnDamageIndicator(location, false, damage, falling);
+    public Entity spawnDamageIndicator(Location location, int damage, boolean falling) {
+        return this.spawnDamageIndicator(location, false, damage, falling);
     }
 
-    public void spawnDamageIndicator(Location location, int damage) {
-        this.spawnDamageIndicator(location, false, damage);
+    public Entity spawnDamageIndicator(Location location, int damage) {
+        return this.spawnDamageIndicator(location, false, damage);
     }
 
     public abstract boolean enableDamageIndicators(Player player);

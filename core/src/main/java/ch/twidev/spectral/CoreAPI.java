@@ -14,8 +14,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
-import java.util.Random;
-
 public class CoreAPI extends SpectralDamage {
 
     private final IPackets packetManager;
@@ -27,7 +25,7 @@ public class CoreAPI extends SpectralDamage {
     }
 
     @Override
-    public void spawnDamageIndicator(Player player, Location location, boolean critical, int damage, boolean falling) {
+    public Entity spawnDamageIndicator(Player player, Location location, boolean critical, int damage, boolean falling) {
         Entity armorStand = packetManager.spawnHologram(player, location, damage, StringUtils.getDamageFormat(damage, critical), getPlugin());
 
         if(falling) {
@@ -35,15 +33,17 @@ public class CoreAPI extends SpectralDamage {
         }else{
             AsyncDestroyTask.createDestroyingTask(player, armorStand);
         }
+
+        return armorStand;
     }
 
     @Override
-    public void spawnDamageIndicator(Player player, Location location, boolean critical, int damage) {
-        this.spawnDamageIndicator(player, location, critical, damage, true);
+    public Entity spawnDamageIndicator(Player player, Location location, boolean critical, int damage) {
+        return this.spawnDamageIndicator(player, location, critical, damage, true);
     }
 
     @Override
-    public void spawnDamageIndicator(Location location, boolean critical, int damage, boolean falling) {
+    public Entity spawnDamageIndicator(Location location, boolean critical, int damage, boolean falling) {
         Entity armorStand = packetManager.spawnHologram(location, damage, StringUtils.getDamageFormat(damage, critical), getPlugin(), falling);
         ArmorStand entityArmorStand = (ArmorStand) armorStand;
         entityArmorStand.setGravity(falling);
@@ -51,12 +51,12 @@ public class CoreAPI extends SpectralDamage {
         if(falling) armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble()/1.8d, 0));
 
         AsyncDestroyTask.createDestroyingTask(null, armorStand);
-
+        return armorStand;
     }
 
     @Override
-    public void spawnDamageIndicator(Location location, boolean critical, int damage) {
-        this.spawnDamageIndicator(location, critical, damage, true);
+    public Entity spawnDamageIndicator(Location location, boolean critical, int damage) {
+        return this.spawnDamageIndicator(location, critical, damage, true);
     }
 
     @Override

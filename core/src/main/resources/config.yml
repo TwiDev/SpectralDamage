@@ -40,3 +40,11 @@ player_damage_indicator: true
 
 # Entities (not players) are affected by damage display (true/false)
 entities_damage_indicator: true
+
+# Messages configuration
+
+message_prefix: "&c&lSpectralDamage &8-"
+message_config_reloaded: "Config file reloaded successfully!"
+message_cannot_toggle_indicator: "Impossible to change the visibility of the damage indicators because they are by default visible to everyone."
+message_indicator_toggle_on: "The visibility of damage indicators has been reactivated!"
+message_indicator_toggle_off: "The visibility of damage indicators has been disabled!"
