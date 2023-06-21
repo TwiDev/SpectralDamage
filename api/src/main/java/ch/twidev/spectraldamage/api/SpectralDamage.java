@@ -136,6 +136,11 @@ public abstract class SpectralDamage {
      */
     public abstract boolean disableDamageIndicators(Player player);
 
+    /**
+     * Get API Instance
+     *
+     * @return API
+     */
     public static SpectralDamage getInstance() {
         return instance;
     }
