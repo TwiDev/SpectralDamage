@@ -6,7 +6,7 @@ ___
 
 [![forthebadge made-with-java](https://forthebadge.com/images/badges/made-with-java.svg)](https://java.com/)
 
->SmartServers is an open collaboration project by [TwiDev](https://github.com/TwiDev).
+>SpectralDamage is an open collaboration project by [TwiDev](https://github.com/TwiDev).
 
 [![Download](https://custom-icon-badges.herokuapp.com/badge/-Download-blue?style=for-the-badge&logo=DOWNLOAD&logoColor=white "Download")](https://www.spigotmc.org/resources/spectraldamage-1-8-1-20-free-damage-indicator-plugin-no-dependencies.110551/)  
 (Via spigotmc.org)
