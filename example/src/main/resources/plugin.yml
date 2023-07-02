@@ -3,7 +3,7 @@ author: TwiDev
 version: 1.0.0
 main: eu.snk.spectraldamage.example.api.SpectralDamageExample
 
-depend:
+softdepend:
   - SpectralDamage
 
 commands:
