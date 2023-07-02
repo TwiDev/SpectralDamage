@@ -7,10 +7,7 @@ import ch.twidev.spectraldamage.damage.DamageTypeEnum;
 import ch.twidev.spectraldamage.tasks.TaskType;
 import ch.twidev.spectraldamage.api.SpectralDamage;
 import org.bukkit.Location;
-import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Creature;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -56,6 +53,7 @@ public class DamageListener implements Listener {
     }
 
     private boolean checkEvent(EntityDamageEvent e) {
+        if(e.getEntity() instanceof ItemFrame) return true;
         if(e.getEntity() instanceof ArmorStand) return true;
 
         if(e.getEntity() instanceof Player && !ConfigManager.CONFIG_VALUES.get(ConfigVars.PLAYER_AFFECTED).asBoolean()) return true;
