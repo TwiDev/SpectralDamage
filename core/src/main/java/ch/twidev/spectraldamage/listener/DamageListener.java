@@ -28,6 +28,7 @@ public class DamageListener implements Listener {
 
         Entity entity = event.getEntity();
         DamageTypeEnum damageType = DamageTypeEnum.checkDamage(null, event.getCause(), true);
+        if(!damageType.isNatural()) return;
         if (damageType.getDetectConfig() != null && !ConfigManager.CONFIG_VALUES.get(damageType.getDetectConfig()).asBoolean())
             return;
         if (TaskType.check() == TaskType.WORLD) {
@@ -48,6 +49,7 @@ public class DamageListener implements Listener {
             Entity target = event.getEntity();
 
             DamageTypeEnum damageType = DamageTypeEnum.checkDamage(damager, event.getCause(), false);
+            if(damageType.isNatural()) return;
             if(damageType.getDetectConfig() != null && !ConfigManager.CONFIG_VALUES.get(damageType.getDetectConfig()).asBoolean()) return;
             this.spawnToPlayer(damager, target.getLocation(), event.getDamage(), damageType);
         }
