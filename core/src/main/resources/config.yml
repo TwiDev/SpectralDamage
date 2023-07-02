@@ -42,6 +42,12 @@ poison_damage: false
 # Poison damage display format (placeholder %damage% will be replaced with damage value)
 poison_damage_format: "&a- &2%damage% &aHP"
 
+# Defines if the fall damage should be displayed with the custom format
+fall_damage: false
+
+# fall damage display format (placeholder %damage% will be replaced with damage value)
+fall_damage_format: "&f- &b%damage% &fHP"
+
 # hologram lifetime (Is fixed so that the hologram disappears after it is in the ground according to
 # at default initial speed and acceleration values)
 # Duration must be in ticks (1 seconds = 20 ticks)

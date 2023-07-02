@@ -8,7 +8,6 @@ import ch.twidev.spectraldamage.damage.DamageTypeEnum;
 import ch.twidev.spectraldamage.tasks.AsyncDestroyTask;
 import ch.twidev.spectraldamage.tasks.AsyncHologramTask;
 import ch.twidev.spectraldamage.tasks.TaskType;
-import ch.twidev.spectraldamage.utils.StringUtils;
 import ch.twidev.spectraldamage.api.SpectralDamage;
 import ch.twidev.spectraldamage.nms.common.IPackets;
 import org.bukkit.Location;

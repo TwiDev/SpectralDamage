@@ -22,15 +22,20 @@ public enum ConfigVars {
     // Defines if the critical damage should be displayed with the custom format
     DETECT_CRITICAL_DAMAGE("critical_damage", true),
     // Defines if the fire damage should be displayed with the custom format
-    DETECT_FIRE_DAMAGE("fire_damage", true),
+    DETECT_FIRE_DAMAGE("fire_damage", false),
     // Defines if the poison damage should be displayed with the custom format
-    DETECT_POISON_DAMAGE("poison_damage", true),
+    DETECT_POISON_DAMAGE("poison_damage", false),
+    // Defines if the fall damage should be displayed with the custom format
+    DETECT_FALL_DAMAGE("fall_damage", false),
     // Critical damage display format
     HOLOGRAM_CRITICAL_DAMAGE_FORMAT("critical_damage_format", "&c- &6&l%damage% &cHP"),
     // Fire damage display format
     HOLOGRAM_FIRE_DAMAGE_FORMAT("fire_damage_format", "&e- &6%damage% &eHP"),
     // Poison damage display format
     HOLOGRAM_POISON_DAMAGE_FORMAT("poison_damage_format", "&a- &2%damage% &aHP"),
+
+    // Fall damage display format
+    HOLOGRAM_FALL_DAMAGE_FORMAT("fall_damage_format", "&f- &b%damage% &fHP"),
     /**
      * hologram lifetime (Is fixed so that the hologram disappears after it is in the ground according to
      * at default initial speed and acceleration values)

@@ -17,6 +17,9 @@ public enum DamageTypeEnum implements DamageTypeFactory {
             || cause == DamageCause.LAVA
     , true, ConfigVars.HOLOGRAM_FIRE_DAMAGE_FORMAT, ConfigVars.DETECT_FIRE_DAMAGE),
     POISON((player, cause) -> cause == DamageCause.POISON,true, ConfigVars.HOLOGRAM_POISON_DAMAGE_FORMAT, ConfigVars.DETECT_POISON_DAMAGE),
+    FALL(((player, cause) ->
+               cause == DamageCause.FALL
+            || cause == DamageCause.FALLING_BLOCK), true, ConfigVars.HOLOGRAM_FALL_DAMAGE_FORMAT, ConfigVars.DETECT_POISON_DAMAGE),
     CRITICAL((player, event) -> player != null && DamageUtility.isCritical(player), false, ConfigVars.HOLOGRAM_CRITICAL_DAMAGE_FORMAT, ConfigVars.DETECT_CRITICAL_DAMAGE);
 
     private final BooleanCallback<Player, DamageCause> checker;
@@ -49,8 +52,8 @@ public enum DamageTypeEnum implements DamageTypeFactory {
         return ConfigManager.CONFIG_VALUES.get(configFormat).asString().replaceAll("&","§").replaceAll("%damage%", String.valueOf(Math.round(damage)));
     }
 
-    public BooleanCallback<Player, DamageCause> getChecker() {
-        return checker;
+    public boolean check(Player player, DamageCause damageCause) {
+        return checker == null || checker.run(player, damageCause);
     }
 
     public static DamageTypeEnum checkDamage(Player damager, DamageCause damageCause, boolean natural) {
@@ -59,13 +62,13 @@ public enum DamageTypeEnum implements DamageTypeFactory {
         for (DamageTypeEnum value : values()) {
             if(value == CRITICAL || value.isNatural() != natural) continue;
 
-            if(value.getChecker().run(damager, damageCause)) {
+            if(value.check(damager, damageCause)) {
                 damageType = value;
                 break;
             }
         }
 
-        if(damageType == NORMAL && DamageTypeEnum.CRITICAL.getChecker().run(damager, damageCause)) {
+        if(damageType == NORMAL && DamageTypeEnum.CRITICAL.check(damager, damageCause)) {
             damageType = CRITICAL;
         }
 
