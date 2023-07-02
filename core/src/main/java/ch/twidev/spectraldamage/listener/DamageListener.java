@@ -24,17 +24,17 @@ public class DamageListener implements Listener {
 
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
-        if(checkEvent(event)) return;
+        if (checkEvent(event)) return;
 
         Entity entity = event.getEntity();
-
-        if(entity instanceof Player) {
-            Player player = (Player) entity;
-            DamageTypeEnum damageType = DamageTypeEnum.checkDamage(null, event.getCause(), true);
-            if(damageType.getDetectConfig() != null && !ConfigManager.CONFIG_VALUES.get(damageType.getDetectConfig()).asBoolean()) return;
-            this.spawnToPlayer(player, player.getLocation(), event.getDamage(), damageType);
+        DamageTypeEnum damageType = DamageTypeEnum.checkDamage(null, event.getCause(), true);
+        if (damageType.getDetectConfig() != null && !ConfigManager.CONFIG_VALUES.get(damageType.getDetectConfig()).asBoolean())
+            return;
+        if (TaskType.check() == TaskType.WORLD) {
+            this.spawnToPlayer(null, entity.getLocation(), event.getDamage(), damageType);
+        } else if (entity instanceof Player) {
+            this.spawnToPlayer(((Player) entity).getPlayer(), entity.getLocation(), event.getDamage(), damageType);
         }
-
     }
 
     @EventHandler
