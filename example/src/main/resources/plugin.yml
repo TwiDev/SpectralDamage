@@ -1,0 +1,11 @@
+name: SpectralDamageExample
+author: TwiDev
+version: 1.0.0
+main: eu.snk.spectraldamage.example.api.SpectralDamageExample
+
+depend:
+  - SpectralDamage
+
+commands:
+  damage:
+    description: Spawn a simple damage indicator

@@ -13,6 +13,7 @@
         <module>core</module>
         <module>nms</module>
         <module>api</module>
+        <module>example</module>
     </modules>
 
     <properties>
