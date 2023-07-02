@@ -25,10 +25,22 @@ acceleration: 4.0
 damage_format: "&c- &4%damage% &cHP"
 
 # Defines if the critical damage should be displayed with the custom format
-damage_critical: true
+critical_damage: true
 
 # Critical damage display format (placeholder %damage% will be replaced with damage value)
-damage_critical_format: "&c- &6&l%damage% &cHP"
+critical_damage_format: "&c- &6&l%damage% &cHP"
+
+# Defines if the fire damage should be displayed with the custom format
+fire_damage: false
+
+# Fire damage display format (placeholder %damage% will be replaced with damage value)
+fire_damage_format: "&e- &6%damage% &eHP"
+
+# Defines if the poison damage should be displayed with the custom format
+poison_damage: false
+
+# Poison damage display format (placeholder %damage% will be replaced with damage value)
+poison_damage_format: "&a- &2%damage% &aHP"
 
 # hologram lifetime (Is fixed so that the hologram disappears after it is in the ground according to
 # at default initial speed and acceleration values)
