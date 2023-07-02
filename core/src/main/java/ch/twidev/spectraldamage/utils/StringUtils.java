@@ -10,7 +10,7 @@ public class StringUtils {
     }
 
     public static String getRawDamageFormat(boolean isCritical) {
-        return (isCritical && ConfigManager.CONFIG_VALUES.get(ConfigVars.DETECT_CRITICAL_DAMAGE).asBoolean()) ? ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_DAMAGE_CRITICAL_FORMAT).asString() : ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_DAMAGE_FORMAT).asString();
+        return (isCritical && ConfigManager.CONFIG_VALUES.get(ConfigVars.DETECT_CRITICAL_DAMAGE).asBoolean()) ? ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_CRITICAL_DAMAGE_FORMAT).asString() : ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_DAMAGE_FORMAT).asString();
     }
 
 }

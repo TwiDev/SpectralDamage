@@ -1,7 +1,10 @@
 package ch.twidev.spectraldamage;
 
+import ch.twidev.spectraldamage.api.DamageType;
+import ch.twidev.spectraldamage.api.DamageTypeFactory;
 import ch.twidev.spectraldamage.config.ConfigManager;
 import ch.twidev.spectraldamage.config.ConfigVars;
+import ch.twidev.spectraldamage.damage.DamageTypeEnum;
 import ch.twidev.spectraldamage.tasks.AsyncDestroyTask;
 import ch.twidev.spectraldamage.tasks.AsyncHologramTask;
 import ch.twidev.spectraldamage.tasks.TaskType;
@@ -25,8 +28,8 @@ public class CoreAPI extends SpectralDamage {
     }
 
     @Override
-    public Entity spawnDamageIndicator(Player player, Location location, boolean critical, int damage, boolean falling) {
-        Entity armorStand = packetManager.spawnHologram(player, location, damage, StringUtils.getDamageFormat(damage, critical), getPlugin());
+    public Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, int damage, boolean falling) {
+        Entity armorStand = packetManager.spawnHologram(player, location, damage, damageType.getFormat(damage), getPlugin());
 
         if(falling) {
             AsyncHologramTask.createHologramTask(player, armorStand, location);
@@ -38,13 +41,13 @@ public class CoreAPI extends SpectralDamage {
     }
 
     @Override
-    public Entity spawnDamageIndicator(Player player, Location location, boolean critical, int damage) {
-        return this.spawnDamageIndicator(player, location, critical, damage, true);
+    public Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, int damage) {
+        return this.spawnDamageIndicator(player, location, damageType, damage, true);
     }
 
     @Override
-    public Entity spawnDamageIndicator(Location location, boolean critical, int damage, boolean falling) {
-        Entity armorStand = packetManager.spawnHologram(location, damage, StringUtils.getDamageFormat(damage, critical), getPlugin(), falling);
+    public Entity spawnDamageIndicator(Location location, DamageTypeFactory damageType, int damage, boolean falling) {
+        Entity armorStand = packetManager.spawnHologram(location, damage, damageType.getFormat(damage), getPlugin(), falling);
         ArmorStand entityArmorStand = (ArmorStand) armorStand;
         entityArmorStand.setGravity(falling);
 
@@ -55,8 +58,8 @@ public class CoreAPI extends SpectralDamage {
     }
 
     @Override
-    public Entity spawnDamageIndicator(Location location, boolean critical, int damage) {
-        return this.spawnDamageIndicator(location, critical, damage, true);
+    public Entity spawnDamageIndicator(Location location, DamageTypeFactory damageType, int damage) {
+        return this.spawnDamageIndicator(location, damageType, damage, true);
     }
 
     @Override
@@ -75,5 +78,15 @@ public class CoreAPI extends SpectralDamage {
 
         SpectralDamagePlugin.PLAYER_VISIBILITY.add(player);
         return true;
+    }
+
+    @Override
+    public DamageTypeFactory getDamageTypeFactory(DamageType damageType) {
+        try {
+            return DamageTypeEnum.valueOf(damageType.toString());
+        } catch (IllegalArgumentException e)  {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
