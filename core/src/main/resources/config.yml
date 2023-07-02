@@ -4,6 +4,7 @@
 update_checker: true
 
 # The holograms are visible only to the player, if false the hologram will be visible to everyone
+# Activating this parameter also makes natural type damage indicators (poisons, fire, fall) on mobs (entities or players) visible to all other players
 showToDamagerOnly: true
 
 # Maximum random coordinate on the X axis of the hologram location (cannot be negative)
