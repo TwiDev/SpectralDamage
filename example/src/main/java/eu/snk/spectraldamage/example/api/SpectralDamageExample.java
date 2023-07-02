@@ -11,14 +11,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class SpectralDamageExample extends JavaPlugin implements CommandExecutor {
 
-    private static final DamageTypeFactory NORMAL_DAMAGE;
-
-    static {
-        NORMAL_DAMAGE = SpectralDamage.getInstance().getDamageTypeFactory(DamageType.NORMAL);
-    }
+    private static DamageTypeFactory NORMAL_DAMAGE;
 
     @Override
     public void onEnable() {
+        NORMAL_DAMAGE = SpectralDamage.getInstance().getDamageTypeFactory(DamageType.NORMAL);
+
         getCommand("damage").setExecutor(this);
     }
 
