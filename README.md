@@ -27,14 +27,12 @@ Maven / gradle : soon
 <u>Get Damage Type instante</u>:
 
 ```java
-    private static DamageTypeFactory NORMAL_DAMAGE;
+private static DamageTypeFactory NORMAL_DAMAGE;
 
-    @Override
-    public void onEnable() {
-        NORMAL_DAMAGE = SpectralDamage.getInstance().getDamageTypeFactory(DamageType.NORMAL);
-
-        getCommand("damage").setExecutor(this);
-    }
+@Override
+public void onEnable(){
+    NORMAL_DAMAGE = SpectralDamage.getInstance().getDamageTypeFactory(DamageType.NORMAL);
+}    
 ```
 
 <u>Spawn Damage Indicator</u>
