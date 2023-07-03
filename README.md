@@ -13,14 +13,22 @@ ___
 
 **Supported versions: 1.8.X - 1.20**
 
-## What is SpectralDamage ?
-
+## ❔ What is SpectralDamage ?
 Spectral Damage is a minecraft spigot plugin that allows you to display in the form of an animated hologram the damage that a player inflicts on a mob or another player
 
-## API
+## ⚙️ API
+
+### Installation
 Download API Jar [here](https://github.com/TwiDev/SpectralDamage/releases)
 
 Maven / gradle : soon
+
+Add this line of code in the plugin.yml of your plugin so that the functions of the api work correctly, moreover do not forget to add the plugin spectraldamage.jar on your server
+
+```yml
+softdepend:
+  - SpectralDamage
+```
 
 ### Examples
 
@@ -40,7 +48,6 @@ public void onEnable(){
 ```java
 SpectralDamage.getInstance().spawnDamageIndicator(player.getLocation(), NORMAL_DAMAGE, 10, true);
 ```
-
 
 
 
