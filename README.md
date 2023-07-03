@@ -23,7 +23,7 @@ Download API Jar [here](https://github.com/TwiDev/SpectralDamage/releases)
 
 Maven / gradle : soon
 
-Add this line of code in the plugin.yml of your plugin so that the functions of the api work correctly, moreover do not forget to add the plugin spectraldamage.jar on your server
+Add this line of code in the **plugin.yml** of your plugin so that the functions of the api work correctly, moreover do not forget to add the plugin spectraldamage.jar on your server.
 
 ```yml
 softdepend:
