@@ -14,6 +14,7 @@ import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.util.Vector;
 
 public class CoreAPI extends SpectralDamage {
@@ -29,6 +30,7 @@ public class CoreAPI extends SpectralDamage {
     @Override
     public Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, int damage, boolean falling) {
         Entity armorStand = packetManager.spawnHologram(player, location, damage, damageType.getFormat(damage), getPlugin());
+        armorStand.setMetadata("_spectraldamage", new FixedMetadataValue(SpectralDamagePlugin.get(), 1));
 
         if(falling) {
             AsyncHologramTask.createHologramTask(player, armorStand, location);
@@ -49,6 +51,7 @@ public class CoreAPI extends SpectralDamage {
         Entity armorStand = packetManager.spawnHologram(location, damage, damageType.getFormat(damage), getPlugin(), falling);
         ArmorStand entityArmorStand = (ArmorStand) armorStand;
         entityArmorStand.setGravity(falling);
+        entityArmorStand.setMetadata("_spectraldamage", new FixedMetadataValue(SpectralDamagePlugin.get(), 1));
 
         if(falling) armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble()/1.8d, 0));
 

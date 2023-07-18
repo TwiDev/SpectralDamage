@@ -12,6 +12,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityInteractEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 
 import java.util.Random;
 
@@ -32,6 +34,19 @@ public class DamageListener implements Listener {
             this.spawnToPlayer(null, entity.getLocation(), event.getDamage(), damageType);
         } else if (entity instanceof Player) {
             this.spawnToPlayer(((Player) entity).getPlayer(), entity.getLocation(), event.getDamage(), damageType);
+        }
+    }
+
+    @EventHandler
+    public void onArmorStandInteract(PlayerInteractAtEntityEvent e) {
+        Entity target = e.getRightClicked();
+
+        if (target == null) return;
+
+        if (target instanceof ArmorStand) {
+            if(target.hasMetadata("_spectraldamage")) {
+                e.setCancelled(true);
+            }
         }
     }
 
