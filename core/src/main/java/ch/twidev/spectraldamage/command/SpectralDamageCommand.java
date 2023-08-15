@@ -1,9 +1,11 @@
 package ch.twidev.spectraldamage.command;
 
 import ch.twidev.spectraldamage.SpectralDamagePlugin;
+import ch.twidev.spectraldamage.api.SpectralDamage;
 import ch.twidev.spectraldamage.config.ConfigManager;
 import ch.twidev.spectraldamage.config.ConfigVars;
 import ch.twidev.spectraldamage.tasks.TaskType;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -18,6 +20,40 @@ public class SpectralDamageCommand implements CommandExecutor {
 
         if(strings.length >= 1) {
             switch (strings[0]) {
+                case "enable":
+                    if(commandSender.hasPermission("spectraldamage.admin") || isOp) {
+                        if(strings.length == 2) {
+                            Player player = Bukkit.getPlayer(strings[1]);
+
+                            if(player != null && player.isOnline()) {
+                                SpectralDamage.getInstance().enableDamageIndicators(player);
+
+                                commandSender.sendMessage(prefix + " §aDamage Indicators enabled for player " + player.getName());
+                            }else{
+                                commandSender.sendMessage(prefix + " §cthis player does not exists.");
+                            }
+                        }else{
+                            commandSender.sendMessage(prefix + " §cInvalid command syntax: /spectraldamage enable <player>");
+                        }
+                    }
+                    break;
+                case "disable":
+                    if(commandSender.hasPermission("spectraldamage.admin") || isOp) {
+                        if(strings.length == 2) {
+                            Player player = Bukkit.getPlayer(strings[1]);
+
+                            if(player != null && player.isOnline()) {
+                                SpectralDamage.getInstance().disableDamageIndicators(player);
+
+                                commandSender.sendMessage(prefix + " §aDamage Indicators disabled for player " + player.getName());
+                            }else{
+                                commandSender.sendMessage(prefix + " §cthis player does not exists.");
+                            }
+                        }else{
+                            commandSender.sendMessage(prefix + " §cInvalid command syntax: /spectraldamage disable <player>");
+                        }
+                    }
+                    break;
                 case "reload":
                     if (commandSender.hasPermission("spectraldamage.reload") || isOp) {
                         SpectralDamagePlugin.get().reloadConfig();
