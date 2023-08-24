@@ -74,6 +74,7 @@ public class PacketsV1_16_R3 implements IPackets {
         armorStand.setInvisible(true);
         armorStand.setCustomName(new ChatMessage(format));
         armorStand.setCustomNameVisible(true);
+        armorStand.setMarker(true);
 
         return armorStand;
     }

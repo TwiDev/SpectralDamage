@@ -5,6 +5,7 @@ import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -17,7 +18,6 @@ public class PacketsV1_8_R3 implements IPackets {
     public Entity spawnHologram(Player player, Location location, double damage, String format, Plugin plugin) {
         PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
         EntityArmorStand armorStand = this.createEntity(location, format, false);
-
         int armorStandID = armorStand.getId();
 
         PacketPlayOutSpawnEntityLiving packet = new PacketPlayOutSpawnEntityLiving(armorStand);

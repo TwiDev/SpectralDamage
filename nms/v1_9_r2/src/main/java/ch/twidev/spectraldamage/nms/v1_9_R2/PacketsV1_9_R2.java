@@ -74,6 +74,7 @@ public class PacketsV1_9_R2 implements IPackets {
         armorStand.setInvisible(true);
         armorStand.setCustomName(format);
         armorStand.setCustomNameVisible(true);
+        armorStand.setMarker(true);
 
         return armorStand;
     }

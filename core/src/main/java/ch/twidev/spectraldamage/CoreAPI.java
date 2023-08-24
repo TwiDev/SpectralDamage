@@ -53,6 +53,7 @@ public class CoreAPI extends SpectralDamage {
         entityArmorStand.setGravity(falling);
         entityArmorStand.setMetadata("_spectraldamage", new FixedMetadataValue(SpectralDamagePlugin.get(), 1));
         entityArmorStand.setArms(false);
+        entityArmorStand.setMarker(true);
 
         if(falling) armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble()/1.8d, 0));
 

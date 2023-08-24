@@ -82,6 +82,7 @@ public class PacketsV1_18_R2 implements IPackets {
         armorStand.a(new ChatMessage(format));
         armorStand.n(true);
         armorStand.e(!gravity);
+        armorStand.t(true);
 
         return armorStand;
     }
