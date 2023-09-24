@@ -6,6 +6,7 @@ import ch.twidev.spectraldamage.config.ConfigManager;
 import ch.twidev.spectraldamage.config.ConfigVars;
 import ch.twidev.spectraldamage.tasks.TaskType;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -17,6 +18,11 @@ public class SpectralDamageCommand implements CommandExecutor {
         boolean isOp = commandSender.isOp();
 
         final String prefix = ConfigManager.parseString(ConfigVars.MESSAGE_PREFIX);
+
+        if(ConfigManager.CONFIG_VALUES.get(ConfigVars.RESTRICT_BY_PERMISSION).asBoolean() && !commandSender.hasPermission("spectraldamage.show")) {
+            commandSender.sendMessage(ChatColor.RED + ConfigManager.parseString(ConfigVars.MESSAGE_NOT_PERMISSION));
+            return false;
+        }
 
         if(strings.length >= 1) {
             switch (strings[0]) {
@@ -35,6 +41,8 @@ public class SpectralDamageCommand implements CommandExecutor {
                         }else{
                             commandSender.sendMessage(prefix + " §cInvalid command syntax: /spectraldamage enable <player>");
                         }
+                    }else{
+                        commandSender.sendMessage(ChatColor.RED + ConfigManager.parseString(ConfigVars.MESSAGE_NOT_PERMISSION));
                     }
                     break;
                 case "disable":
@@ -52,6 +60,8 @@ public class SpectralDamageCommand implements CommandExecutor {
                         }else{
                             commandSender.sendMessage(prefix + " §cInvalid command syntax: /spectraldamage disable <player>");
                         }
+                    }else{
+                        commandSender.sendMessage(ChatColor.RED + ConfigManager.parseString(ConfigVars.MESSAGE_NOT_PERMISSION));
                     }
                     break;
                 case "reload":
@@ -59,6 +69,8 @@ public class SpectralDamageCommand implements CommandExecutor {
                         SpectralDamagePlugin.get().reloadConfig();
                         ConfigManager.load();
                             commandSender.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_CONFIG_RELOADED));
+                    }else{
+                        commandSender.sendMessage(ChatColor.RED + ConfigManager.parseString(ConfigVars.MESSAGE_NOT_PERMISSION));
                     }
 
                     break;
@@ -75,13 +87,15 @@ public class SpectralDamageCommand implements CommandExecutor {
                         }
 
                         if (commandSender.hasPermission("spectraldamage.toggle") || isOp) {
-                            if(SpectralDamagePlugin.PLAYER_VISIBILITY.contains(player)) {
-                                SpectralDamagePlugin.PLAYER_VISIBILITY.remove(player);
+                            if(SpectralDamagePlugin.PLAYER_VISIBILITY.getOrDefault(player, true)) {
+                                SpectralDamagePlugin.PLAYER_VISIBILITY.put(player,false);
                                 player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_ON));
                             }else{
-                                SpectralDamagePlugin.PLAYER_VISIBILITY.add(player);
+                                SpectralDamagePlugin.PLAYER_VISIBILITY.put(player,false);
                                 player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_OFF));
                             }
+                        }else{
+                            commandSender.sendMessage(ChatColor.RED + ConfigManager.parseString(ConfigVars.MESSAGE_NOT_PERMISSION));
                         }
 
                     }

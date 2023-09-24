@@ -69,7 +69,7 @@ public class CoreAPI extends SpectralDamage {
     @Override
     public boolean enableDamageIndicators(Player player) {
         if(TaskType.check() == TaskType.WORLD) return false;
-        if(SpectralDamagePlugin.PLAYER_VISIBILITY.contains(player)) return false;
+        if(SpectralDamagePlugin.PLAYER_VISIBILITY.containsKey(player) && SpectralDamagePlugin.PLAYER_VISIBILITY.get(player)) return false;
 
         SpectralDamagePlugin.PLAYER_VISIBILITY.remove(player);
         return true;
@@ -78,9 +78,9 @@ public class CoreAPI extends SpectralDamage {
     @Override
     public boolean disableDamageIndicators(Player player) {
         if(TaskType.check() == TaskType.WORLD) return false;
-        if(!SpectralDamagePlugin.PLAYER_VISIBILITY.contains(player)) return false;
+        if(SpectralDamagePlugin.PLAYER_VISIBILITY.containsKey(player) && !SpectralDamagePlugin.PLAYER_VISIBILITY.get(player)) return false;
 
-        SpectralDamagePlugin.PLAYER_VISIBILITY.add(player);
+        SpectralDamagePlugin.PLAYER_VISIBILITY.put(player, false);
         return true;
     }
 

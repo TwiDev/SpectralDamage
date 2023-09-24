@@ -79,6 +79,8 @@ public class DamageListener implements Listener {
 
     // Create armor stand NMS entity
     private void spawnToPlayer(Player damager, Location location, double damage, DamageTypeEnum damageType) {
+        if(ConfigManager.CONFIG_VALUES.get(ConfigVars.RESTRICT_BY_PERMISSION).asBoolean() && !damager.hasPermission("spectraldamage.show")) return;
+
         double offsetX = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_OFFSET_X).asDouble();
         double offsetY = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_OFFSET_Y).asDouble();
         double offsetZ = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_OFFSET_Z).asDouble();
@@ -92,7 +94,8 @@ public class DamageListener implements Listener {
             return;
         }
 
-        if(SpectralDamagePlugin.PLAYER_VISIBILITY.contains(damager)) return;
+        if(SpectralDamagePlugin.PLAYER_VISIBILITY.containsKey(damager) && SpectralDamagePlugin.PLAYER_VISIBILITY.get(damager)) return;
+        if(!ConfigManager.CONFIG_VALUES.get(ConfigVars.ENABLE_BY_DEFAULT).asBoolean() && (!SpectralDamagePlugin.PLAYER_VISIBILITY.containsKey(damager) || SpectralDamagePlugin.PLAYER_VISIBILITY.get(damager))) return;
         SpectralDamage.getInstance().spawnDamageIndicator(damager, targetLocation, damageType, Math.toIntExact(Math.round(damage)), fallingAnimation);
     }
 }

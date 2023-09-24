@@ -7,6 +7,12 @@ update_checker: true
 # Activating this parameter also makes natural type damage indicators (poisons, fire, fall) on mobs (entities or players) visible to all other players
 showToDamagerOnly: true
 
+# The plugin will be activated by default for all players
+enable_by_default: true
+
+#allow only a group of players with (spectraldamage.show) permission to use the plugin
+restrict_by_permission: false
+
 # Maximum random coordinate on the X axis of the hologram location (cannot be negative)
 offset_x: 1.35
 # Maximum random coordinate on the Y axis of the hologram location (can be negative)
@@ -67,3 +73,4 @@ message_config_reloaded: "Config file reloaded successfully!"
 message_cannot_toggle_indicator: "Impossible to change the visibility of the damage indicators because they are by default visible to everyone."
 message_indicator_toggle_on: "The visibility of damage indicators has been reactivated!"
 message_indicator_toggle_off: "The visibility of damage indicators has been disabled!"
+message_not_permission: "You do not have permission to perform this action"

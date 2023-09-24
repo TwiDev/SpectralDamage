@@ -16,6 +16,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +26,7 @@ import java.util.logging.Logger;
  */
 public class SpectralDamagePlugin extends JavaPlugin {
 
-    public static final List<Player> PLAYER_VISIBILITY = new ArrayList<>();
+    public static final HashMap<Player, Boolean> PLAYER_VISIBILITY = new HashMap<>();
 
     public static final List<Integer> TASKS_ID = new ArrayList<>();
 

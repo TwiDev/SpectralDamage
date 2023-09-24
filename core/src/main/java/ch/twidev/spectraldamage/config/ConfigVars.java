@@ -7,6 +7,10 @@ public enum ConfigVars {
     // The holograms are visible only to the player, if false the hologram will be visible to everyone
     SHOW_TO_DAMAGER_ONLY("showToDamagerOnly", true),
 
+    // The plugin will be activated by default for all players
+    ENABLE_BY_DEFAULT("enable_by_default",true),
+    RESTRICT_BY_PERMISSION("restrict_by_permission", false),
+
     // Maximum random coordinate on the X axis of the hologram location
     HOLOGRAM_OFFSET_X("offset_x", 1.25d),
     // Maximum random coordinate on the Z axis of the hologram location
@@ -51,7 +55,8 @@ public enum ConfigVars {
     MESSAGE_CONFIG_RELOADED("message_config_reloaded", "Config file reloaded successfully!"),
     MESSAGE_CANNOT_TOGGLE_INDICATOR("message_cannot_toggle_indicator", "Impossible to change the visibility of the damage indicators because they are by default visible to everyone."),
     MESSAGE_INDICATOR_TOGGLE_ON("message_indicator_toggle_on", "The visibility of damage indicators has been reactivated!"),
-    MESSAGE_INDICATOR_TOGGLE_OFF("message_indicator_toggle_off", "The visibility of damage indicators has been disabled!");
+    MESSAGE_INDICATOR_TOGGLE_OFF("message_indicator_toggle_off", "The visibility of damage indicators has been disabled!"),
+    MESSAGE_NOT_PERMISSION("message_not_permission","You do not have permission to perform this action");
 
     private final String configName;
     private final Object defaultValue;
