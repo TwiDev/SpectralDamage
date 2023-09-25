@@ -1,0 +1,2 @@
+- Bow Damage
+- Healing Indicator
