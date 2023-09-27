@@ -91,7 +91,7 @@ public class SpectralDamageCommand implements CommandExecutor {
                                 SpectralDamagePlugin.PLAYER_VISIBILITY.put(player,false);
                                 player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_ON));
                             }else{
-                                SpectralDamagePlugin.PLAYER_VISIBILITY.put(player,false);
+                                SpectralDamagePlugin.PLAYER_VISIBILITY.put(player,true);
                                 player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_OFF));
                             }
                         }else{
