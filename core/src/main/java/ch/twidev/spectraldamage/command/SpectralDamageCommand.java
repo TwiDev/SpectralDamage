@@ -87,7 +87,7 @@ public class SpectralDamageCommand implements CommandExecutor {
                         }
 
                         if (commandSender.hasPermission("spectraldamage.toggle") || isOp) {
-                            if(SpectralDamagePlugin.PLAYER_VISIBILITY.getOrDefault(player, true)) {
+                            if(SpectralDamagePlugin.PLAYER_VISIBILITY.getOrDefault(player, !ConfigManager.CONFIG_VALUES.get(ConfigVars.ENABLE_BY_DEFAULT).asBoolean())) {
                                 SpectralDamagePlugin.PLAYER_VISIBILITY.put(player,false);
                                 player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_ON));
                             }else{
