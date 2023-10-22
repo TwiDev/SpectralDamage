@@ -2,8 +2,10 @@ package ch.twidev.spectraldamage.nms.v1_19_R2;
 
 import ch.twidev.spectraldamage.nms.common.IPackets;
 import net.minecraft.network.chat.IChatBaseComponent;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.*;
+import net.minecraft.network.protocol.game.PacketPlayOutEntity;
+import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
+import net.minecraft.network.protocol.game.PacketPlayOutEntityMetadata;
+import net.minecraft.network.protocol.game.PacketPlayOutSpawnEntity;
 import net.minecraft.server.network.PlayerConnection;
 import net.minecraft.world.entity.decoration.EntityArmorStand;
 import net.minecraft.world.level.World;

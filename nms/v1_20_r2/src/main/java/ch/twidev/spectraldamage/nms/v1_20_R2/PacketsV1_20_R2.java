@@ -32,8 +32,8 @@ public class PacketsV1_20_R2 implements IPackets {
         PacketPlayOutSpawnEntity packet = new PacketPlayOutSpawnEntity(armorStand);
         PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(armorStandID, armorStand.al().b());
 
-        connection.a(packet);
-        connection.a(metadata);
+        connection.b(packet);
+        connection.b(metadata);
 
         return armorStand.getBukkitEntity();
     }
@@ -84,7 +84,7 @@ public class PacketsV1_20_R2 implements IPackets {
 
     @Override
     public void destroyEntity(Player player, int entityId) {
-        ((CraftPlayer) player).getHandle().c.a(new PacketPlayOutEntityDestroy(entityId));
+        ((CraftPlayer) player).getHandle().c.b(new PacketPlayOutEntityDestroy(entityId));
     }
 
     @Override

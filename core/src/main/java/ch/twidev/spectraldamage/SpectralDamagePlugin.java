@@ -18,6 +18,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Callable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,6 +27,8 @@ import java.util.logging.Logger;
  * @author TwiDev
  */
 public class SpectralDamagePlugin extends JavaPlugin {
+
+    public static final int pluginId = 20119;
 
     public static final HashMap<Player, Boolean> PLAYER_VISIBILITY = new HashMap<>();
 
@@ -36,11 +40,16 @@ public class SpectralDamagePlugin extends JavaPlugin {
 
     private IPackets packetManager;
 
+    private Metrics metrics;
+
     private CoreAPI api;
 
     @Override
     public void onEnable() {
         INSTANCE = this;
+
+        metrics = new Metrics(this, pluginId);
+        metrics.addCustomChart(new Metrics.SimplePie("launch", () -> packetManager.getVersionName()));
 
         log("#=============[SPECTRAL DAMAGE IS ENABLED]=============#");
         log("# Spectral Damage is now loading. Please read          #");
@@ -90,10 +99,15 @@ public class SpectralDamagePlugin extends JavaPlugin {
         }
 
         this.api = new CoreAPI(this);
+
     }
 
     public CoreAPI getAPI() {
         return api;
+    }
+
+    public Metrics getMetrics() {
+        return metrics;
     }
 
     @NotNull
@@ -104,6 +118,9 @@ public class SpectralDamagePlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         // Stop all active scheduler
+
+
+        metrics.shutdown();
 
         TASKS_ID.forEach(id -> {
             Bukkit.getScheduler().cancelTask(id);
