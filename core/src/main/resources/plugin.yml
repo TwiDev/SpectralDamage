@@ -1,6 +1,6 @@
 name: SpectralDamage
 author: TwiDev
-version: DEV
+version: 2.4.2
 main: ch.twidev.spectraldamage.SpectralDamagePlugin
 
 commands:

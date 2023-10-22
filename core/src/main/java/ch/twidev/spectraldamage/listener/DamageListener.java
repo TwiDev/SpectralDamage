@@ -1,18 +1,17 @@
 package ch.twidev.spectraldamage.listener;
 
 import ch.twidev.spectraldamage.SpectralDamagePlugin;
+import ch.twidev.spectraldamage.api.SpectralDamage;
 import ch.twidev.spectraldamage.config.ConfigManager;
 import ch.twidev.spectraldamage.config.ConfigVars;
 import ch.twidev.spectraldamage.damage.DamageTypeEnum;
 import ch.twidev.spectraldamage.tasks.TaskType;
-import ch.twidev.spectraldamage.api.SpectralDamage;
 import org.bukkit.Location;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityInteractEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 
 import java.util.Random;
@@ -23,6 +22,7 @@ public class DamageListener implements Listener {
 
     @EventHandler
     public void onDamage(EntityDamageEvent event) {
+        if (event.isCancelled()) return;
         if (checkEvent(event)) return;
 
         Entity entity = event.getEntity();
@@ -52,6 +52,7 @@ public class DamageListener implements Listener {
 
     @EventHandler
     public void onDamageByEntity(EntityDamageByEntityEvent event) {
+        if(event.isCancelled()) return;
         if(event.getEntity() instanceof ArmorStand) return;
 
         if(event.getDamager() instanceof Player) {
