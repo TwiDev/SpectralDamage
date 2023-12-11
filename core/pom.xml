@@ -157,6 +157,11 @@
             <artifactId>spectraldamage-nms-v1_20_r2</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>ch.twidev.spectraldamage</groupId>
+            <artifactId>spectraldamage-nms-v1_20_r3</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
