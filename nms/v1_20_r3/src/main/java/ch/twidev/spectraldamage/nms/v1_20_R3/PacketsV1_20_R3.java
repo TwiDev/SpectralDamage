@@ -51,13 +51,13 @@ public class PacketsV1_20_R3 implements IPackets {
     public org.bukkit.entity.Entity spawnHologram(Location location, double damage, String format, Plugin plugin, boolean gravity) {
         EntityArmorStand armorStand = this.createEntity(location, format, gravity);
         Class<?> nmsStandClass = net.minecraft.world.entity.Entity.class;
-        try {
+      /*  try {
             Field noClip = nmsStandClass.getDeclaredField("ae");
             noClip.setAccessible(true);
             noClip.setBoolean(armorStand, true);
         } catch (Exception ex) {
             ex.printStackTrace();
-        }
+        }*/
 
         armorStand.dM().addFreshEntity(armorStand, CreatureSpawnEvent.SpawnReason.CUSTOM);
         return armorStand.getBukkitEntity();

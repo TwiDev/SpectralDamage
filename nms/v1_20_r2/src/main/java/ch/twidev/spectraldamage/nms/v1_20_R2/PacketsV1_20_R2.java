@@ -56,7 +56,7 @@ public class PacketsV1_20_R2 implements IPackets {
             noClip.setAccessible(true);
             noClip.setBoolean(armorStand, true);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
 
         armorStand.dL().addFreshEntity(armorStand, CreatureSpawnEvent.SpawnReason.CUSTOM);
