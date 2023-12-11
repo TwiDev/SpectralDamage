@@ -66,7 +66,7 @@ public class SpectralDamagePlugin extends JavaPlugin {
         try {
             this.packetManager = NMSVersion.getCurrentVersion().getManagerFactory().create();
         } catch (NMSManagerFactory.UnknownVersionException e) {
-            throw new PluginEnableException("Spectral Damage only supports Spigot from 1.8 to 1.20.");
+            throw new PluginEnableException("Spectral Damage only supports Spigot from 1.8 to 1.20.3");
         } catch (NMSManagerFactory.OutdatedVersionException e) {
             throw new PluginEnableException("Spectral Damage doesn't support this version please use " + e.getMinimumSupportedVersion());
         }

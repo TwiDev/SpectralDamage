@@ -32,8 +32,8 @@ public enum NMSVersion {
     /* 1.19.3          */ v1_19_R2(() -> new ch.twidev.spectraldamage.nms.v1_19_R2.PacketsV1_19_R2()),
     /* 1.19.4          */ v1_19_R3(() -> new ch.twidev.spectraldamage.nms.v1_19_R3.PacketsV1_19_R3()),
     /* 1.20 - 1.20.1   */ v1_20_R1(() -> new ch.twidev.spectraldamage.nms.v1_20_R1.PacketsV1_20_R1()),
-    /* 1.20.2 - ?      */ v1_20_R2(() -> new ch.twidev.spectraldamage.nms.v1_20_R2.PacketsV1_20_R2()),
-    /* 1.20.2 - ?      */ v1_20_R3(() -> new ch.twidev.spectraldamage.nms.v1_20_R3.PacketsV1_20_R3()),
+    /* 1.20.2 - 1.20.3 */ v1_20_R2(() -> new ch.twidev.spectraldamage.nms.v1_20_R2.PacketsV1_20_R2()),
+    /* 1.20.3 - ?      */ v1_20_R3(() -> new ch.twidev.spectraldamage.nms.v1_20_R3.PacketsV1_20_R3()),
     /* Other versions  */ UNKNOWN(NMSManagerFactory.unknownVersion());
 
     private static final NMSVersion CURRENT_VERSION;
