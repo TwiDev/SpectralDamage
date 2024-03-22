@@ -122,10 +122,12 @@ public class SpectralDamagePlugin extends JavaPlugin {
 
         metrics.shutdown();
 
-        TASKS_ID.forEach(id -> {
-            Bukkit.getScheduler().cancelTask(id);
-        });
-        TASKS_ID.clear();
+        try {
+            TASKS_ID.forEach(id -> {
+                Bukkit.getScheduler().cancelTask(id);
+            });
+            TASKS_ID.clear();
+        } catch (NullPointerException ignore) {}
     }
 
     public void stop() {
