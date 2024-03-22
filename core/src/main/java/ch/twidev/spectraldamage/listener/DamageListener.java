@@ -26,6 +26,10 @@ public class DamageListener implements Listener {
         if (checkEvent(event)) return;
 
         Entity entity = event.getEntity();
+        if(entity instanceof ArmorStand) return;
+        if(!(entity instanceof LivingEntity)) return;
+        if(event.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION) return;
+
         DamageTypeEnum damageType = DamageTypeEnum.checkDamage(null, event.getCause(), true);
         if(!damageType.isNatural()) return;
         if (damageType.getDetectConfig() != null && !ConfigManager.CONFIG_VALUES.get(damageType.getDetectConfig()).asBoolean())
@@ -80,6 +84,8 @@ public class DamageListener implements Listener {
 
     // Create armor stand NMS entity
     private void spawnToPlayer(Player damager, Location location, double damage, DamageTypeEnum damageType) {
+        if(damage < ConfigManager.CONFIG_VALUES.get(ConfigVars.DETECT_MINIMUM_DAMAGE).asInt()) return;
+
         if(ConfigManager.CONFIG_VALUES.get(ConfigVars.RESTRICT_BY_PERMISSION).asBoolean() && !damager.hasPermission("spectraldamage.show")) return;
 
         double offsetX = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_OFFSET_X).asDouble();
