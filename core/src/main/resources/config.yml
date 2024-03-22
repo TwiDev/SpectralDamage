@@ -31,6 +31,10 @@ acceleration: 4.0
 # Damage display format (placeholder %damage% will be replaced with damage value)
 damage_format: "&c- &4%damage% &cHP"
 
+# Minimum number of damage needed to display the hologram
+# leave the value at 0 to disable this option
+minimum_damage: 0
+
 # Defines if the critical damage should be displayed with the custom format
 critical_damage: true
 

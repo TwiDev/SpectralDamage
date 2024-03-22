@@ -23,6 +23,8 @@ public enum ConfigVars {
     HOLOGRAM_ACCELERATION("acceleration", 4),
     // Damage display format
     HOLOGRAM_DAMAGE_FORMAT("damage_format", "&c- &4%damage% &cHP"),
+    // Minimum number of damage needed to display the hologram
+    DETECT_MINIMUM_DAMAGE("minimum_damage", 0),
     // Defines if the critical damage should be displayed with the custom format
     DETECT_CRITICAL_DAMAGE("critical_damage", true),
     // Defines if the fire damage should be displayed with the custom format
