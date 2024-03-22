@@ -26,6 +26,10 @@ public class DamageListener implements Listener {
         if (checkEvent(event)) return;
 
         Entity entity = event.getEntity();
+        if(entity instanceof ArmorStand) return;
+        if(!(entity instanceof LivingEntity)) return;
+        if(event.getCause() == EntityDamageEvent.DamageCause.SUFFOCATION) return;
+
         DamageTypeEnum damageType = DamageTypeEnum.checkDamage(null, event.getCause(), true);
         if(!damageType.isNatural()) return;
         if (damageType.getDetectConfig() != null && !ConfigManager.CONFIG_VALUES.get(damageType.getDetectConfig()).asBoolean())
