@@ -31,6 +31,10 @@ public enum ConfigVars {
     DETECT_FIRE_DAMAGE("fire_damage", false),
     // Defines if the poison damage should be displayed with the custom format
     DETECT_POISON_DAMAGE("poison_damage", false),
+    // Defines if the potion damage should be displayed with the custom format
+    DETECT_POTION_DAMAGE("potion_damage", false),
+    // Defines if the projectile damage should be displayed with the custom format
+    DETECT_PROJECTILE_DAMAGE("projectile_damage", false),
     // Defines if the fall damage should be displayed with the custom format
     DETECT_FALL_DAMAGE("fall_damage", false),
     // Critical damage display format
@@ -39,7 +43,10 @@ public enum ConfigVars {
     HOLOGRAM_FIRE_DAMAGE_FORMAT("fire_damage_format", "&e- &6%damage% &eHP"),
     // Poison damage display format
     HOLOGRAM_POISON_DAMAGE_FORMAT("poison_damage_format", "&a- &2%damage% &aHP"),
-
+    // Magic damage display format
+    HOLOGRAM_MAGIC_DAMAGE_FORMAT("potion_damage_format", "&d- &2%damage% &aHP"),
+    // Projectile damage display format
+    HOLOGRAM_PROJECTILE_DAMAGE_FORMAT("projectile_damage_format", "&6- &2%damage% &aHP"),
     // Fall damage display format
     HOLOGRAM_FALL_DAMAGE_FORMAT("fall_damage_format", "&f- &b%damage% &fHP"),
     /**

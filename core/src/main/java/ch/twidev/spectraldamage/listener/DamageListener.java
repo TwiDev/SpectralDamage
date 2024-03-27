@@ -13,6 +13,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import java.util.Random;
 
@@ -56,19 +59,44 @@ public class DamageListener implements Listener {
 
     @EventHandler
     public void onDamageByEntity(EntityDamageByEntityEvent event) {
-        if(event.isCancelled()) return;
-        if(event.getEntity() instanceof ArmorStand) return;
+        if (event.isCancelled()) return;
+        if (event.getEntity() instanceof ArmorStand) return;
 
-        if(event.getDamager() instanceof Player) {
-            if(checkEvent(event)) return;
+        if (checkEvent(event)) return;
+        if(!(event.getDamager() instanceof LivingEntity)) return;
 
-            Player damager = (Player) event.getDamager();
-            Entity target = event.getEntity();
+        Entity damager = event.getDamager();
+        Entity target = event.getEntity();
 
-            DamageTypeEnum damageType = DamageTypeEnum.checkDamage(damager, event.getCause(), false);
-            if(damageType.isNatural()) return;
-            if(damageType.getDetectConfig() != null && !ConfigManager.CONFIG_VALUES.get(damageType.getDetectConfig()).asBoolean()) return;
-            this.spawnToPlayer(damager, target.getLocation(), event.getDamage(), damageType);
+        DamageTypeEnum damageType = DamageTypeEnum.checkDamage(damager, event.getCause(), false);
+        if (damageType.isNatural()) return;
+        Player playerDamager = null;
+        if(damager instanceof Player) {
+            playerDamager = (Player) damager;
+        }else {
+            if (damageType.isProjectile()) {
+                Projectile projectile = null;
+
+                if (damageType == DamageTypeEnum.MAGIC && damager instanceof ThrownPotion) {
+                    ThrownPotion thrownPotion = (ThrownPotion) damager;
+                    if(thrownPotion.getEffects().stream().anyMatch(potionEffect -> potionEffect.getType() == PotionEffectType.HARM)) {
+                        projectile = thrownPotion;
+                    }
+                }else if(damageType == DamageTypeEnum.PROJECTILE && damager instanceof Arrow) {
+                    projectile = (Arrow) damager;
+                }
+
+                if(projectile != null && projectile.getShooter() instanceof Player) {
+                    playerDamager = (Player) projectile.getShooter();
+                }
+            }
+        }
+
+        if (damageType.getDetectConfig() != null && !ConfigManager.CONFIG_VALUES.get(damageType.getDetectConfig()).asBoolean())
+            return;
+
+        if(playerDamager != null) {
+            this.spawnToPlayer(playerDamager, target.getLocation(), event.getDamage(), damageType);
         }
     }
 
