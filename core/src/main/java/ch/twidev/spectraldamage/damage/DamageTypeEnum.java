@@ -12,7 +12,7 @@ import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
 public enum DamageTypeEnum implements DamageTypeFactory {
 
-    NORMAL(null, false, ConfigVars.HOLOGRAM_DAMAGE_FORMAT, null),
+    NORMAL((player,cause) -> cause == DamageCause.ENTITY_ATTACK, false, ConfigVars.HOLOGRAM_DAMAGE_FORMAT, null),
     FIRE((player, cause) ->
                cause == DamageCause.FIRE
             || cause == DamageCause.FIRE_TICK

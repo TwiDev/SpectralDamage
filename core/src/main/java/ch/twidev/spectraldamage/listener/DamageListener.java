@@ -6,6 +6,7 @@ import ch.twidev.spectraldamage.config.ConfigManager;
 import ch.twidev.spectraldamage.config.ConfigVars;
 import ch.twidev.spectraldamage.damage.DamageTypeEnum;
 import ch.twidev.spectraldamage.tasks.TaskType;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -13,8 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
-import org.bukkit.potion.Potion;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.Random;
@@ -63,11 +62,9 @@ public class DamageListener implements Listener {
         if (event.getEntity() instanceof ArmorStand) return;
 
         if (checkEvent(event)) return;
-        if(!(event.getDamager() instanceof LivingEntity)) return;
 
         Entity damager = event.getDamager();
         Entity target = event.getEntity();
-
         DamageTypeEnum damageType = DamageTypeEnum.checkDamage(damager, event.getCause(), false);
         if (damageType.isNatural()) return;
         Player playerDamager = null;
@@ -82,8 +79,8 @@ public class DamageListener implements Listener {
                     if(thrownPotion.getEffects().stream().anyMatch(potionEffect -> potionEffect.getType() == PotionEffectType.HARM)) {
                         projectile = thrownPotion;
                     }
-                }else if(damageType == DamageTypeEnum.PROJECTILE && damager instanceof Arrow) {
-                    projectile = (Arrow) damager;
+                }else if(damageType == DamageTypeEnum.PROJECTILE && damager.getType().equals(EntityType.ARROW)) {
+                    projectile = (Projectile) damager;
                 }
 
                 if(projectile != null && projectile.getShooter() instanceof Player) {
