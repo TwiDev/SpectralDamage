@@ -81,7 +81,7 @@ public class SpectralDamagePlugin extends JavaPlugin {
         getCommand("spectraldamage").setExecutor(new SpectralDamageCommand());
 
         if(ConfigManager.CONFIG_VALUES.get(ConfigVars.UPDATE_CHECKER).asBoolean()) {
-            log("[SPECTRAL DAMAGE] Checking for a new update ...");
+            log("[Spectral Damage] Checking for a new update ...");
             new UpdateChecker(this, 110551).getVersion(version -> {
                 Bukkit.getScheduler().runTaskLater(SpectralDamagePlugin.get(), () -> {
                     if (this.getDescription().getVersion().equals(version)) {

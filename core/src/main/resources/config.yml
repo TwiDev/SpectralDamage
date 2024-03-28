@@ -1,4 +1,4 @@
-# Config - Spectral Damage a plugin by TwiDev (Version 2.5.1)
+# Config - Spectral Damage a plugin by TwiDev (Version 2.6.0)
 
 # Check for an update of the plugin at each start and warn the admins
 update_checker: true
@@ -52,6 +52,18 @@ poison_damage: false
 
 # Poison damage display format (placeholder %damage% will be replaced with damage value)
 poison_damage_format: "&a- &2%damage% &aHP"
+
+# Defines if the potion damage should be displayed with the custom format
+potion_damage: false
+
+# Potion (Only Harming Potion) damage display format (placeholder %damage% will be replaced with damage value)
+potion_damage_format: "&d- &5%damage% &dHP"
+
+# Defines if the projectile damage should be displayed with the custom format
+projectile_damage: false
+
+# Projectile damage display format (placeholder %damage% will be replaced with damage value)
+projectile_damage_format: "&c- &6%damage% &cHP"
 
 # Defines if the fall damage should be displayed with the custom format
 fall_damage: false
