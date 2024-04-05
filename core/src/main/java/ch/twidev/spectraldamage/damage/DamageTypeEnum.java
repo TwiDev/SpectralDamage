@@ -66,7 +66,7 @@ public enum DamageTypeEnum implements DamageTypeFactory {
 
     @Override
     public String getFormat(double damage) {
-        return ConfigManager.CONFIG_VALUES.get(configFormat).asString().replaceAll("&","§").replaceAll("%damage%", String.valueOf(Math.round(damage)));
+        return ConfigManager.CONFIG_VALUES.get(configFormat).asString().replaceAll("&","§").replaceAll("%damage%", String.valueOf(damage));
     }
 
     public boolean check(Entity player, DamageCause damageCause) {

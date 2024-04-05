@@ -37,9 +37,9 @@ public class DamageListener implements Listener {
         if (damageType.getDetectConfig() != null && !ConfigManager.CONFIG_VALUES.get(damageType.getDetectConfig()).asBoolean())
             return;
         if (TaskType.check() == TaskType.WORLD) {
-            this.spawnToPlayer(null, entity.getLocation(), event.getDamage(), damageType);
+            this.spawnToPlayer(null, entity.getLocation(), event.getFinalDamage(), damageType);
         } else if (entity instanceof Player) {
-            this.spawnToPlayer(((Player) entity).getPlayer(), entity.getLocation(), event.getDamage(), damageType);
+            this.spawnToPlayer(((Player) entity).getPlayer(), entity.getLocation(), event.getFinalDamage(), damageType);
         }
     }
 
