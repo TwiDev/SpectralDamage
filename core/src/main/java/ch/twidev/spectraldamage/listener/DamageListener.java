@@ -93,7 +93,7 @@ public class DamageListener implements Listener {
             return;
 
         if(playerDamager != null) {
-            this.spawnToPlayer(playerDamager, target.getLocation(), event.getDamage(), damageType);
+            this.spawnToPlayer(playerDamager, target.getLocation(), event.getFinalDamage(), damageType);
         }
     }
 
@@ -121,13 +121,16 @@ public class DamageListener implements Listener {
 
         boolean fallingAnimation = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean();
 
+        double scale = Math.pow(10, 4);
+        double scaledDamage = Math.round(damage * scale) / scale;
+
         if(TaskType.check() == TaskType.WORLD){
-            SpectralDamage.getInstance().spawnDamageIndicator(targetLocation, damageType, Math.toIntExact(Math.round(damage)), fallingAnimation);
+            SpectralDamage.getInstance().spawnDamageIndicator(targetLocation, damageType, scaledDamage, fallingAnimation);
             return;
         }
 
         if(SpectralDamagePlugin.PLAYER_VISIBILITY.containsKey(damager) && SpectralDamagePlugin.PLAYER_VISIBILITY.get(damager)) return;
         if(!ConfigManager.CONFIG_VALUES.get(ConfigVars.ENABLE_BY_DEFAULT).asBoolean() && (!SpectralDamagePlugin.PLAYER_VISIBILITY.containsKey(damager) || SpectralDamagePlugin.PLAYER_VISIBILITY.get(damager))) return;
-        SpectralDamage.getInstance().spawnDamageIndicator(damager, targetLocation, damageType, Math.toIntExact(Math.round(damage)), fallingAnimation);
+        SpectralDamage.getInstance().spawnDamageIndicator(damager, targetLocation, damageType, scaledDamage, fallingAnimation);
     }
 }

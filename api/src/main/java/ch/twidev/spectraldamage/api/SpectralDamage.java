@@ -32,7 +32,7 @@ public abstract class SpectralDamage {
      * @return Damage indicator hologram (ArmorStand entity) (Packet entity)
      */
 
-    public abstract Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, int damage, boolean falling);
+    public abstract Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, double damage, boolean falling);
 
     /**
      * Spawn a damage indicator visible only to a player
@@ -43,7 +43,7 @@ public abstract class SpectralDamage {
      * @param damage point of damage to show in the hologram
      * @return Damage indicator hologram (ArmorStand entity) (Packet entity)
      */
-    public abstract Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, int damage);
+    public abstract Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, double damage);
 
     /**
      * Shows a damage indicator visible to all players who have not disabled damage indicators
@@ -54,7 +54,7 @@ public abstract class SpectralDamage {
      * @param falling is hologram falling to the ground (animation configurable)
      * @return Damage indicator hologram (ArmorStand entity)
      */
-    public abstract Entity spawnDamageIndicator(Location location, DamageTypeFactory damageType, int damage, boolean falling);
+    public abstract Entity spawnDamageIndicator(Location location, DamageTypeFactory damageType, double damage, boolean falling);
 
     /**
      * Shows a damage indicator visible to all players who have not disabled damage indicators
@@ -65,7 +65,7 @@ public abstract class SpectralDamage {
      * @return Damage indicator hologram (ArmorStand entity)
      */
 
-    public abstract Entity spawnDamageIndicator(Location location, DamageTypeFactory damageType, int damage);
+    public abstract Entity spawnDamageIndicator(Location location, DamageTypeFactory damageType, double damage);
 
 
     /**
@@ -78,7 +78,7 @@ public abstract class SpectralDamage {
      * @return Damage indicator hologram (ArmorStand entity) (Packet entity)
      */
 
-    public Entity spawnDamageIndicator(Player player, Location location, int damage, boolean falling) {
+    public Entity spawnDamageIndicator(Player player, Location location, double damage, boolean falling) {
         return this.spawnDamageIndicator(player, location, getDamageTypeFactory(DamageType.NORMAL), damage, falling);
     }
 
@@ -92,7 +92,7 @@ public abstract class SpectralDamage {
      * @return Damage indicator hologram (ArmorStand entity) (Packet entity)
      */
 
-    public Entity spawnDamageIndicator(Player player, Location location, int damage) {
+    public Entity spawnDamageIndicator(Player player, Location location, double damage) {
         return this.spawnDamageIndicator(player, location, getDamageTypeFactory(DamageType.NORMAL), damage);
     }
 
@@ -104,7 +104,7 @@ public abstract class SpectralDamage {
      * @param falling is hologram falling to the ground (animation configurable)
      * @return Damage indicator hologram (ArmorStand entity)
      */
-    public Entity spawnDamageIndicator(Location location, int damage, boolean falling) {
+    public Entity spawnDamageIndicator(Location location, double damage, boolean falling) {
         return this.spawnDamageIndicator(location, getDamageTypeFactory(DamageType.NORMAL), damage, falling);
     }
 
@@ -116,7 +116,7 @@ public abstract class SpectralDamage {
      * @return Damage indicator hologram (ArmorStand entity)
      */
 
-    public Entity spawnDamageIndicator(Location location, int damage) {
+    public Entity spawnDamageIndicator(Location location, double damage) {
         return this.spawnDamageIndicator(location,getDamageTypeFactory(DamageType.NORMAL), damage);
     }
 

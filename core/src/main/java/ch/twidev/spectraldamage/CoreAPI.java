@@ -28,7 +28,7 @@ public class CoreAPI extends SpectralDamage {
     }
 
     @Override
-    public Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, int damage, boolean falling) {
+    public Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, double damage, boolean falling) {
         Entity armorStand = packetManager.spawnHologram(player, location, damage, damageType.getFormat(damage), getPlugin());
         armorStand.setMetadata("_spectraldamage", new FixedMetadataValue(SpectralDamagePlugin.get(), 1));
 
@@ -42,12 +42,12 @@ public class CoreAPI extends SpectralDamage {
     }
 
     @Override
-    public Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, int damage) {
+    public Entity spawnDamageIndicator(Player player, Location location, DamageTypeFactory damageType, double damage) {
         return this.spawnDamageIndicator(player, location, damageType, damage, true);
     }
 
     @Override
-    public Entity spawnDamageIndicator(Location location, DamageTypeFactory damageType, int damage, boolean falling) {
+    public Entity spawnDamageIndicator(Location location, DamageTypeFactory damageType, double damage, boolean falling) {
         Entity armorStand = packetManager.spawnHologram(location, damage, damageType.getFormat(damage), getPlugin(), falling);
         ArmorStand entityArmorStand = (ArmorStand) armorStand;
         entityArmorStand.setGravity(falling);
@@ -62,7 +62,7 @@ public class CoreAPI extends SpectralDamage {
     }
 
     @Override
-    public Entity spawnDamageIndicator(Location location, DamageTypeFactory damageType, int damage) {
+    public Entity spawnDamageIndicator(Location location, DamageTypeFactory damageType, double damage) {
         return this.spawnDamageIndicator(location, damageType, damage, true);
     }
 
