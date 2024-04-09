@@ -21,6 +21,9 @@ public enum ConfigVars {
     HOLOGRAM_INITIAL_SPEED("initial_speed", 1.15d),
     // Acceleration at which the hologram is attracted to the ground
     HOLOGRAM_ACCELERATION("acceleration", 4),
+
+    // Number of decimal places of the number of damages displayed on the hologram
+    HOLOGRAM_DAMAGE_DECIMAL("damage_decimal", 1),
     // Damage display format
     HOLOGRAM_DAMAGE_FORMAT("damage_format", "&c- &4%damage% &cHP"),
     // Minimum number of damage needed to display the hologram

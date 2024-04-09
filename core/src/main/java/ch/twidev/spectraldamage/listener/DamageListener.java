@@ -121,7 +121,7 @@ public class DamageListener implements Listener {
 
         boolean fallingAnimation = ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_FALLING_ANIMATION).asBoolean();
 
-        double scale = Math.pow(10, 4);
+        double scale = Math.pow(10, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_DAMAGE_DECIMAL).asInt());
         double scaledDamage = Math.round(damage * scale) / scale;
 
         if(TaskType.check() == TaskType.WORLD){

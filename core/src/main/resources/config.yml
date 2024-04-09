@@ -28,6 +28,9 @@ initial_speed: 1.15
 # Acceleration at which the hologram is attracted to the ground
 acceleration: 4.0
 
+# Number of decimal places of the number of damages displayed on the hologram
+damage_decimal: 1
+
 # Damage display format (placeholder %damage% will be replaced with damage value)
 damage_format: "&c- &4%damage% &cHP"
 
