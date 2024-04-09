@@ -19,4 +19,8 @@ public interface IPackets {
 
     String getVersionName();
 
+    default String getColoredString(String s){
+        return s;
+    }
+
 }

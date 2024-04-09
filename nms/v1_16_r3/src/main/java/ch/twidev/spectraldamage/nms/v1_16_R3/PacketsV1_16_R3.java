@@ -1,6 +1,7 @@
 package ch.twidev.spectraldamage.nms.v1_16_R3;
 
 import ch.twidev.spectraldamage.nms.common.IPackets;
+import ch.twidev.spectraldamage.nms.rgb.ColorUtils;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_16_R3.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer;
@@ -82,5 +83,10 @@ public class PacketsV1_16_R3 implements IPackets {
     @Override
     public String getVersionName() {
         return "V1.16_R3";
+    }
+
+    @Override
+    public String getColoredString(String s) {
+        return ColorUtils.colorize(s);
     }
 }

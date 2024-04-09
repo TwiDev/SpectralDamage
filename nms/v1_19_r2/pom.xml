@@ -14,9 +14,9 @@
     <version>${global.version}</version>
 
     <properties>
-        <java.version>17</java.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>8</java.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -26,7 +26,11 @@
             <artifactId>spectraldamage-nms-common</artifactId>
             <version>${global.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>ch.twidev.spectraldamage</groupId>
+            <artifactId>spectraldamage-nms-rbg-support</artifactId>
+            <version>${global.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>

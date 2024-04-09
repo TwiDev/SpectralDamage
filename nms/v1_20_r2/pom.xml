@@ -26,5 +26,10 @@
             <version>1.20.2-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>ch.twidev.spectraldamage</groupId>
+            <artifactId>spectraldamage-nms-rbg-support</artifactId>
+            <version>${global.version}</version>
+        </dependency>
     </dependencies>
 </project>

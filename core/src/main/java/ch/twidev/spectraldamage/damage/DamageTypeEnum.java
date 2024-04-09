@@ -6,8 +6,6 @@ import ch.twidev.spectraldamage.config.ConfigVars;
 import ch.twidev.spectraldamage.utils.BooleanCallback;
 import ch.twidev.spectraldamage.utils.DamageUtility;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
 public enum DamageTypeEnum implements DamageTypeFactory {
@@ -66,7 +64,11 @@ public enum DamageTypeEnum implements DamageTypeFactory {
 
     @Override
     public String getFormat(double damage) {
-        return ConfigManager.CONFIG_VALUES.get(configFormat).asString().replaceAll("&","§").replaceAll("%damage%", String.valueOf(damage));
+        String formatted = ColorUtils.colorize(
+                ConfigManager.CONFIG_VALUES.get(configFormat).asString().replaceAll("§","&").replaceAll("%damage%", String.valueOf(damage))
+        );
+
+        return ;
     }
 
     public boolean check(Entity player, DamageCause damageCause) {

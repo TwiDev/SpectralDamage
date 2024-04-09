@@ -1,6 +1,7 @@
 package ch.twidev.spectraldamage.nms.v1_19_R3;
 
 import ch.twidev.spectraldamage.nms.common.IPackets;
+import ch.twidev.spectraldamage.nms.rgb.ColorUtils;
 import net.minecraft.network.chat.IChatBaseComponent;
 import net.minecraft.network.protocol.game.PacketPlayOutEntity;
 import net.minecraft.network.protocol.game.PacketPlayOutEntityDestroy;
@@ -92,4 +93,10 @@ public class PacketsV1_19_R3 implements IPackets {
     public String getVersionName() {
         return "V1.19_R3";
     }
+
+    @Override
+    public String getColoredString(String s) {
+        return ColorUtils.colorize(s);
+    }
+
 }
