@@ -1,4 +1,4 @@
-# Config - Spectral Damage a plugin by TwiDev (Version 2.6.0)
+# Config - Spectral Damage a plugin by TwiDev (Version 2.6.2)
 
 # Check for an update of the plugin at each start and warn the admins
 update_checker: true
@@ -32,6 +32,9 @@ acceleration: 4.0
 damage_decimal: 1
 
 # Damage display format (placeholder %damage% will be replaced with damage value)
+# RBG supported use &<HEX> or &<LEGACY> to use color in damage format
+# Use <#FF6600> YOUR TEXT </#9DFF8A> to create gradient between two colors
+
 damage_format: "&c- &4%damage% &cHP"
 
 # Minimum number of damage needed to display the hologram
