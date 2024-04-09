@@ -1,8 +1,10 @@
 package ch.twidev.spectraldamage.damage;
 
+import ch.twidev.spectraldamage.SpectralDamagePlugin;
 import ch.twidev.spectraldamage.api.DamageTypeFactory;
 import ch.twidev.spectraldamage.config.ConfigManager;
 import ch.twidev.spectraldamage.config.ConfigVars;
+import ch.twidev.spectraldamage.nms.common.IPackets;
 import ch.twidev.spectraldamage.utils.BooleanCallback;
 import ch.twidev.spectraldamage.utils.DamageUtility;
 import org.bukkit.entity.Entity;
@@ -64,11 +66,11 @@ public enum DamageTypeEnum implements DamageTypeFactory {
 
     @Override
     public String getFormat(double damage) {
-        String formatted = ColorUtils.colorize(
+        String formatted = SpectralDamagePlugin.get().getPacketManager().getColoredString(
                 ConfigManager.CONFIG_VALUES.get(configFormat).asString().replaceAll("§","&").replaceAll("%damage%", String.valueOf(damage))
         );
 
-        return ;
+        return formatted.replaceAll("&","§");
     }
 
     public boolean check(Entity player, DamageCause damageCause) {
