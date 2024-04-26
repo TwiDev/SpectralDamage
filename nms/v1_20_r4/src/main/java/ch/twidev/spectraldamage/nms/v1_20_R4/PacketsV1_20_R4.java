@@ -1,4 +1,4 @@
-package ch.twidev.spectraldamage.nms.v1_20_R3;
+package ch.twidev.spectraldamage.nms.v1_20_R4;
 
 import ch.twidev.spectraldamage.nms.common.IPackets;
 import ch.twidev.spectraldamage.nms.rgb.ColorUtils;
@@ -11,14 +11,14 @@ import net.minecraft.server.network.PlayerConnection;
 import net.minecraft.world.entity.decoration.EntityArmorStand;
 import net.minecraft.world.level.World;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_20_R3.CraftWorld;
-import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R4.CraftWorld;
+import org.bukkit.craftbukkit.v1_20_R4.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.plugin.Plugin;
 
-public class PacketsV1_20_R3 implements IPackets {
+public class PacketsV1_20_R4 implements IPackets {
     @Override
     public Entity spawnHologram(Player player, Location location, double damage, String format, Plugin plugin) {
         PlayerConnection connection = ((CraftPlayer) player).getHandle().c;
@@ -26,10 +26,10 @@ public class PacketsV1_20_R3 implements IPackets {
 
         EntityArmorStand armorStand = this.createEntity(location, format, false);
 
-        int armorStandID = armorStand.aj();
+        int armorStandID = armorStand.al();
 
         PacketPlayOutSpawnEntity packet = new PacketPlayOutSpawnEntity(armorStand);
-        PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(armorStandID, armorStand.an().b());
+        PacketPlayOutEntityMetadata metadata = new PacketPlayOutEntityMetadata(armorStandID, armorStand.ap().b());
 
         connection.b(packet);
         connection.b(metadata);
@@ -58,7 +58,7 @@ public class PacketsV1_20_R3 implements IPackets {
             ex.printStackTrace();
         }*/
 
-        armorStand.dM().addFreshEntity(armorStand, CreatureSpawnEvent.SpawnReason.CUSTOM);
+        armorStand.dP().addFreshEntity(armorStand, CreatureSpawnEvent.SpawnReason.CUSTOM);
         return armorStand.getBukkitEntity();
     }
 
@@ -88,7 +88,7 @@ public class PacketsV1_20_R3 implements IPackets {
 
     @Override
     public String getVersionName() {
-        return "V1.20_R3";
+        return "V1.20_R4";
     }
 
     @Override

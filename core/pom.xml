@@ -153,13 +153,18 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>ch.twidev.spectraldamage</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_20_r2</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>ch.twidev.spectraldamage</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>spectraldamage-nms-v1_20_r3</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_20_r4</artifactId>
             <scope>compile</scope>
         </dependency>
     </dependencies>
