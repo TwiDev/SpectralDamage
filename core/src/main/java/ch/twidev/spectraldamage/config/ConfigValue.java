@@ -10,7 +10,7 @@ public class ConfigValue {
 
     public int asInt() {
         try {
-            return (int) value;
+            return (int) Math.ceil(Double.parseDouble(value.toString()));
         } catch (ClassCastException e) {
             e.printStackTrace();
             return -1;
