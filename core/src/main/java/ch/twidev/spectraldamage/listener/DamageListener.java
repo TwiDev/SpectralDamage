@@ -125,7 +125,7 @@ public class DamageListener implements Listener {
         double scaledDamage = Math.round(damage * scale) / scale;
 
         if(TaskType.check() == TaskType.WORLD){
-            SpectralDamage.getInstance().spawnDamageIndicator(targetLocation, damageType, scaledDamage, fallingAnimation);
+            SpectralDamage.getInstance().spawnDamageIndicator(targetLocation, damageType, scaledDamage, false);
             return;
         }
 

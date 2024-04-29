@@ -48,7 +48,7 @@ public class PacketsV1_20_R4 implements IPackets {
 
     @Override
     public org.bukkit.entity.Entity spawnHologram(Location location, double damage, String format, Plugin plugin, boolean gravity) {
-        EntityArmorStand armorStand = this.createEntity(location, format, gravity);
+        EntityArmorStand armorStand = this.createEntity(location.add(0,1,0), format, gravity);
         Class<?> nmsStandClass = net.minecraft.world.entity.Entity.class;
       /*  try {
             Field noClip = nmsStandClass.getDeclaredField("ae");
@@ -70,13 +70,13 @@ public class PacketsV1_20_R4 implements IPackets {
     public EntityArmorStand createEntity(Location location, String format, boolean gravity) {
         World mcWorld = ((CraftWorld) location.getWorld()).getHandle();
         EntityArmorStand armorStand = new EntityArmorStand(mcWorld, location.getX(), location.getY(), location.getZ());
-        armorStand.a(true);
+        armorStand.t(true);
         //armorStand.setNoGravity(!gravity);
-        armorStand.j(true);
+        armorStand.f(true);
         armorStand.b(IChatBaseComponent.a(format));
-        armorStand.n(true);
+        armorStand.k(true);
         armorStand.e(!gravity);
-        armorStand.u(true);
+        armorStand.o(true);
 
         return armorStand;
     }
