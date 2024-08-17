@@ -1,7 +1,6 @@
 package ch.twidev.spectraldamage.nms.v1_21_R1;
 
 import ch.twidev.spectraldamage.nms.common.IPackets;
-import ch.twidev.spectraldamage.nms.rgb.ColorUtils;
 import net.minecraft.core.BlockPosition;
 import net.minecraft.network.chat.IChatBaseComponent;
 import net.minecraft.network.protocol.game.PacketPlayOutEntity;
@@ -77,6 +76,7 @@ public class PacketsV1_21_R1 implements IPackets {
         armorStand.f(true);
         armorStand.b(IChatBaseComponent.a(format));
         armorStand.k(true);
+        armorStand.p(true);
         armorStand.e(!gravity);
         armorStand.o(true);
 
@@ -90,7 +90,7 @@ public class PacketsV1_21_R1 implements IPackets {
 
     @Override
     public String getVersionName() {
-        return "V1.20_R4";
+        return "V1.21_R1";
     }
 
 }

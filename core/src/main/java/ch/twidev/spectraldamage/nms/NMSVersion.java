@@ -35,27 +35,13 @@ public enum NMSVersion {
     /* 1.20.2 - 1.20.3 */ v1_20_R2(() -> new ch.twidev.spectraldamage.nms.v1_20_R2.PacketsV1_20_R2()),
     /* 1.20.3 - 1.20.4 */ v1_20_R3(() -> new ch.twidev.spectraldamage.nms.v1_20_R3.PacketsV1_20_R3()),
     /* 1.20.5 - 1.20.6 */ v1_20_R4(() -> new ch.twidev.spectraldamage.nms.v1_20_R4.PacketsV1_20_R4()),
-    /* 1.21   - X      */ v1_21_R1(() -> new ch.twidev.spectraldamage.nms.v1_21_R1.PacketsV1_21_R1()),
+    /* 1.21   - 1.21.1 */ v1_21_R1(() -> new ch.twidev.spectraldamage.nms.v1_21_R1.PacketsV1_21_R1()),
     /* Other versions  */ UNKNOWN(NMSManagerFactory.unknownVersion());
 
     private static NMSVersion CURRENT_VERSION;
 
     static {
         CURRENT_VERSION = detectCurrentVersion(Bukkit.getServer().getClass().getPackage().getName());
-
-        System.out.println(Bukkit.getServer().getBukkitVersion());
-        System.out.println(Bukkit.getServer().getClass().getPackage().getName());
-
-        if(CURRENT_VERSION == UNKNOWN) {
-            Matcher matcher = Pattern.compile("\\d+.\\d+.\\d+").matcher(Bukkit.getServer().getBukkitVersion());
-            if (!matcher.find()) {
-                CURRENT_VERSION = UNKNOWN;
-            }
-
-            System.out.println(matcher.group());
-
-            CURRENT_VERSION = detectCurrentVersion(matcher.group());
-        }
     }
 
     final NMSManagerFactory iPackets;
@@ -74,7 +60,7 @@ public enum NMSVersion {
 
     private static NMSVersion detectCurrentVersion(String name) {
         String bukkitVersion = Bukkit.getServer().getBukkitVersion();
-        int    majorVersion  = Integer.parseInt(bukkitVersion.split("[.-]")[1]);
+        int  majorVersion  = Integer.parseInt(bukkitVersion.split("[.-]")[1]);
         if (majorVersion >= 20) {
             switch (bukkitVersion) {
                 case "1.20-R0.1-SNAPSHOT":
@@ -89,6 +75,7 @@ public enum NMSVersion {
                 case "1.20.6-R0.1-SNAPSHOT":
                     return v1_20_R4;
                 case "1.21-R0.1-SNAPSHOT":
+                case "1.21.1-R0.1-SNAPSHOT":
                     return v1_21_R1;
                 default:
                     return UNKNOWN;
