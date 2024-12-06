@@ -177,6 +177,11 @@
             <artifactId>spectraldamage-nms-v1_21_r2</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>spectraldamage-nms-v1_21_r3</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
