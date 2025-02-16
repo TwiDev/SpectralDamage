@@ -77,6 +77,18 @@ fall_damage: false
 # fall damage display format (placeholder %damage% will be replaced with damage value)
 fall_damage_format: "&f- &b%damage% &fHP"
 
+# Defines if the health regeneration should be displayed with the custom format
+health_regen: false
+
+# health regen display format (placeholder %damage% will be replaced with the value)
+health_regen_format: "&2+ &a%damage% &fHP"
+
+# Defines if the health gain should be displayed with the custom format
+health_gain: false
+
+# health gain display format (placeholder %damage% will be replaced with the value)
+health_gain_format: "&5+ &d%damage% &fHP"
+
 # hologram lifetime (Is fixed so that the hologram disappears after it is in the ground according to
 # at default initial speed and acceleration values)
 # Duration must be in ticks (1 seconds = 20 ticks)
