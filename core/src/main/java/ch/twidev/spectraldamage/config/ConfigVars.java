@@ -40,6 +40,10 @@ public enum ConfigVars {
     DETECT_PROJECTILE_DAMAGE("projectile_damage", false),
     // Defines if the fall damage should be displayed with the custom format
     DETECT_FALL_DAMAGE("fall_damage", false),
+    // Defines if the health regeneration should be displayed with the custom format
+    DETECT_HEALTH_REGEN("health_regen", false),
+    // Defines if the health gain (potions, ...) should be displayed with the custom format
+    DETECT_HEALTH_GAIN("health_gain", false),
     // Critical damage display format
     HOLOGRAM_CRITICAL_DAMAGE_FORMAT("critical_damage_format", "&c- &6&l%damage% &cHP"),
     // Fire damage display format
@@ -52,6 +56,10 @@ public enum ConfigVars {
     HOLOGRAM_PROJECTILE_DAMAGE_FORMAT("projectile_damage_format", "&6- &2%damage% &aHP"),
     // Fall damage display format
     HOLOGRAM_FALL_DAMAGE_FORMAT("fall_damage_format", "&f- &b%damage% &fHP"),
+    // Health Regen display format
+    HOLOGRAM_HEALTH_REGEN_FORMAT("health_regen_format", "&2+ &a%damage% &fHP"),
+    // Health Gain display format
+    HOLOGRAM_HEALTH_GAIN_FORMAT("health_gain_format", "&5+ &d%damage% &fHP"),
     /**
      * hologram lifetime (Is fixed so that the hologram disappears after it is in the ground according to
      * at default initial speed and acceleration values)

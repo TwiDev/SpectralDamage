@@ -13,6 +13,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityEvent;
+import org.bukkit.event.entity.EntityRegainHealthEvent;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.potion.PotionEffectType;
 
@@ -97,7 +99,22 @@ public class DamageListener implements Listener {
         }
     }
 
-    private boolean checkEvent(EntityDamageEvent e) {
+    @EventHandler
+    public void onHeal(EntityRegainHealthEvent e) {
+        if(!(e.getEntity() instanceof Player) ||!checkEvent(e)) return;
+
+        if(e.getRegainReason() == EntityRegainHealthEvent.RegainReason.REGEN) {
+            if(ConfigManager.CONFIG_VALUES.get(ConfigVars.DETECT_HEALTH_REGEN).asBoolean()) {
+                this.spawnToPlayer(e.getEntity(), e.getEntity().getLocation(), e.getAmount(), DamageTypeEnum.HEALTH_REGEN);
+            }
+        }else{
+            if(ConfigManager.CONFIG_VALUES.get(ConfigVars.DETECT_HEALTH_GAIN).asBoolean()) {
+                this.spawnToPlayer(e.getEntity(), e.getEntity().getLocation(), e.getAmount(), DamageTypeEnum.HEALTH_GAIN);
+            }
+        }
+    }
+
+    private boolean checkEvent(EntityEvent e) {
         if(e.getEntity() instanceof ItemFrame) return true;
         if(e.getEntity() instanceof ArmorStand) return true;
 
@@ -108,7 +125,7 @@ public class DamageListener implements Listener {
     }
 
     // Create armor stand NMS entity
-    private void spawnToPlayer(Player damager, Location location, double damage, DamageTypeEnum damageType) {
+    private void spawnToPlayer(Entity damager, Location location, double damage, DamageTypeEnum damageType) {
         if(damage < ConfigManager.CONFIG_VALUES.get(ConfigVars.DETECT_MINIMUM_DAMAGE).asInt()) return;
 
         if(ConfigManager.CONFIG_VALUES.get(ConfigVars.RESTRICT_BY_PERMISSION).asBoolean() && !damager.hasPermission("spectraldamage.show")) return;
@@ -129,8 +146,13 @@ public class DamageListener implements Listener {
             return;
         }
 
-        if(SpectralDamagePlugin.PLAYER_VISIBILITY.containsKey(damager) && SpectralDamagePlugin.PLAYER_VISIBILITY.get(damager)) return;
-        if(!ConfigManager.CONFIG_VALUES.get(ConfigVars.ENABLE_BY_DEFAULT).asBoolean() && (!SpectralDamagePlugin.PLAYER_VISIBILITY.containsKey(damager) || SpectralDamagePlugin.PLAYER_VISIBILITY.get(damager))) return;
-        SpectralDamage.getInstance().spawnDamageIndicator(damager, targetLocation, damageType, scaledDamage, fallingAnimation);
+        if(damager instanceof Player) {
+            Player player = (Player) damager;
+
+            if(SpectralDamagePlugin.PLAYER_VISIBILITY.containsKey(player) && SpectralDamagePlugin.PLAYER_VISIBILITY.get(player)) return;
+            if(!ConfigManager.CONFIG_VALUES.get(ConfigVars.ENABLE_BY_DEFAULT).asBoolean() && (!SpectralDamagePlugin.PLAYER_VISIBILITY.containsKey(player) || SpectralDamagePlugin.PLAYER_VISIBILITY.get(player))) return;
+            SpectralDamage.getInstance().spawnDamageIndicator(player, targetLocation, damageType, scaledDamage, fallingAnimation);
+        }
+
     }
 }

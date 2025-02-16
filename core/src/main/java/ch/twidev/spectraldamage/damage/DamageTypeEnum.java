@@ -24,7 +24,9 @@ public enum DamageTypeEnum implements DamageTypeFactory {
     FALL(((player, cause) ->
                cause == DamageCause.FALL
             || cause == DamageCause.FALLING_BLOCK), true, ConfigVars.HOLOGRAM_FALL_DAMAGE_FORMAT, ConfigVars.DETECT_POISON_DAMAGE),
-    CRITICAL((player, event) -> DamageUtility.isCritical(player), false, ConfigVars.HOLOGRAM_CRITICAL_DAMAGE_FORMAT, ConfigVars.DETECT_CRITICAL_DAMAGE);
+    CRITICAL((player, event) -> DamageUtility.isCritical(player), false, ConfigVars.HOLOGRAM_CRITICAL_DAMAGE_FORMAT, ConfigVars.DETECT_CRITICAL_DAMAGE),
+    HEALTH_REGEN((entity, damageCause) -> false, false, ConfigVars.HOLOGRAM_HEALTH_REGEN_FORMAT, ConfigVars.DETECT_HEALTH_REGEN),
+    HEALTH_GAIN((entity, damageCause) -> false, false, ConfigVars.HOLOGRAM_HEALTH_GAIN_FORMAT, ConfigVars.DETECT_HEALTH_GAIN);
 
     private final BooleanCallback<Entity, DamageCause> checker;
 

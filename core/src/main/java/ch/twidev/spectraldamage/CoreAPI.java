@@ -7,6 +7,7 @@ import ch.twidev.spectraldamage.config.ConfigVars;
 import ch.twidev.spectraldamage.damage.DamageTypeEnum;
 import ch.twidev.spectraldamage.tasks.AsyncDestroyTask;
 import ch.twidev.spectraldamage.tasks.AsyncHologramTask;
+import ch.twidev.spectraldamage.tasks.SyncHologramTask;
 import ch.twidev.spectraldamage.tasks.TaskType;
 import ch.twidev.spectraldamage.api.SpectralDamage;
 import ch.twidev.spectraldamage.nms.common.IPackets;
@@ -32,8 +33,14 @@ public class CoreAPI extends SpectralDamage {
         Entity armorStand = packetManager.spawnHologram(player, location, damage, damageType.getFormat(damage), getPlugin());
         armorStand.setMetadata("_spectraldamage", new FixedMetadataValue(SpectralDamagePlugin.get(), 1));
 
+        TaskType taskType = TaskType.check();
+
         if(falling) {
-            AsyncHologramTask.createHologramTask(player, armorStand, location);
+            if(taskType == TaskType.WORLD) {
+                SyncHologramTask.createHologramTask(armorStand, location);
+            }else {
+                AsyncHologramTask.createHologramTask(player, armorStand, location);
+            }
         }else{
             AsyncDestroyTask.createDestroyingTask(player, armorStand);
         }
@@ -55,9 +62,13 @@ public class CoreAPI extends SpectralDamage {
         entityArmorStand.setArms(false);
         entityArmorStand.setMarker(true);
 
-        if(falling) armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble()/1.8d, 0));
+       // if(falling) armorStand.setVelocity(new Vector(0, ConfigManager.CONFIG_VALUES.get(ConfigVars.HOLOGRAM_INITIAL_SPEED).asDouble()/1.8d, 0));
 
-        AsyncDestroyTask.createDestroyingTask(null, armorStand);
+        if(falling) {
+            SyncHologramTask.createHologramTask(armorStand, location);
+        }else{
+            AsyncDestroyTask.createDestroyingTask(null, armorStand);
+        }
         return armorStand;
     }
 
