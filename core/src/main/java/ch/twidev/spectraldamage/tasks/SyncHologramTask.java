@@ -53,7 +53,7 @@ public class SyncHologramTask extends BukkitRunnable {
         double time = tick/20d;
         double dy = INITIAL_SPEED*time - 0.5d*ACCELERATION*Math.pow(time, 2);
 
-        armorStand.teleport(armorStand.getLocation().subtract(0,dy,0));
+        armorStand.teleport(armorStand.getLocation().subtract(0,0.1,0));
 
 
         if(tick >= DURATION) {
