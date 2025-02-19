@@ -101,7 +101,7 @@ public class DamageListener implements Listener {
 
     @EventHandler
     public void onHeal(EntityRegainHealthEvent e) {
-        if(!(e.getEntity() instanceof Player) ||!checkEvent(e)) return;
+        if(!(e.getEntity() instanceof Player) || checkEvent(e)) return;
 
         if(e.getRegainReason() == EntityRegainHealthEvent.RegainReason.REGEN) {
             if(ConfigManager.CONFIG_VALUES.get(ConfigVars.DETECT_HEALTH_REGEN).asBoolean()) {
