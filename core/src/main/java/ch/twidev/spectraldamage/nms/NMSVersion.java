@@ -38,6 +38,7 @@ public enum NMSVersion {
     /* 1.21   - 1.21.1 */ v1_21_R1(() -> new ch.twidev.spectraldamage.nms.v1_21_R1.PacketsV1_21_R1()),
     /* 1.21.2 - 1.21.3 */ v1_21_R2(() -> new ch.twidev.spectraldamage.nms.v1_21_R2.PacketsV1_21_R2()),
     /* 1.21.3 - 1.21.4 */ v1_21_R3(() -> new ch.twidev.spectraldamage.nms.v1_21_R3.PacketsV1_21_R3()),
+    /* 1.21.3 - 1.21.4 */ v1_21_R4(() -> new ch.twidev.spectraldamage.nms.v1_21_R4.PacketsV1_21_R4()),
     /* Other versions  */ UNKNOWN(NMSManagerFactory.unknownVersion());
 
     private static NMSVersion CURRENT_VERSION;
@@ -84,6 +85,8 @@ public enum NMSVersion {
                     return v1_21_R2;
                 case "1.21.4-R0.1-SNAPSHOT":
                     return v1_21_R3;
+                case "1.21.5-R0.1-SNAPSHOT":
+                    return v1_21_R4;
                 default:
                     return UNKNOWN;
             }

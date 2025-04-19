@@ -28,7 +28,6 @@ public class SyncHologramTask extends BukkitRunnable {
     /**
      * Create a hologram gravity position task
      *
-     * @param player Player to send the packet (damager)
      * @param armorStand NMS hologram entity
      * @param initialLocation Initial location of the NMS hologram
      */
