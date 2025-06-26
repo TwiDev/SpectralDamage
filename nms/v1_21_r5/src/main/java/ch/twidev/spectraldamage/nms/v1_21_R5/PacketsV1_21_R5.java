@@ -72,14 +72,14 @@ public class PacketsV1_21_R5 implements IPackets {
     public EntityArmorStand createEntity(Location location, String format, boolean gravity) {
         World mcWorld = ((CraftWorld) location.getWorld()).getHandle();
         EntityArmorStand armorStand = new EntityArmorStand(mcWorld, location.getX(), location.getY(), location.getZ());
-        armorStand.t(true);
+        armorStand.u(true); // small
         //armorStand.setNoGravity(!gravity);
-        armorStand.f(true);
+        armorStand.f(true); //no gravity
         armorStand.b(IChatBaseComponent.a(format));
-        armorStand.k(true);
-        armorStand.p(true);
+        armorStand.l(true); //inv
         armorStand.e(!gravity);
-        armorStand.o(true);
+        armorStand.p(true); //custom name
+        armorStand.n(true);
 
         return armorStand;
     }
