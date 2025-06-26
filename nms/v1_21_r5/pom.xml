@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>ch.twidev.spectraldamage</groupId>
+        <artifactId>spectraldamage-nms</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>spectraldamage-nms-v1_21_r5</artifactId>
+    <name>SpectralDamage NMS v1_21_R5</name>
+    <version>${global.version}</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>ch.twidev.spectraldamage</groupId>
+            <artifactId>spectraldamage-nms-common</artifactId>
+            <version>${global.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
+            <version>1.21.6-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.twidev.spectraldamage</groupId>
+            <artifactId>spectraldamage-nms-rbg-support</artifactId>
+            <version>${global.version}</version>
+        </dependency>
+    </dependencies>
+</project>
