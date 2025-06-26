@@ -34,12 +34,12 @@ public class SpectralDamageCommand implements CommandExecutor {
                             if(player != null && player.isOnline()) {
                                 SpectralDamage.getInstance().enableDamageIndicators(player);
 
-                                commandSender.sendMessage(prefix + " §aDamage Indicators enabled for player " + player.getName());
+                                commandSender.sendMessage(prefix + "§aDamage Indicators enabled for player " + player.getName());
                             }else{
-                                commandSender.sendMessage(prefix + " §cthis player does not exists.");
+                                commandSender.sendMessage(prefix + "§cthis player does not exists.");
                             }
                         }else{
-                            commandSender.sendMessage(prefix + " §cInvalid command syntax: /spectraldamage enable <player>");
+                            commandSender.sendMessage(prefix + "§cInvalid command syntax: /spectraldamage enable <player>");
                         }
                     }else{
                         commandSender.sendMessage(ChatColor.RED + ConfigManager.parseString(ConfigVars.MESSAGE_NOT_PERMISSION));
@@ -53,12 +53,12 @@ public class SpectralDamageCommand implements CommandExecutor {
                             if(player != null && player.isOnline()) {
                                 SpectralDamage.getInstance().disableDamageIndicators(player);
 
-                                commandSender.sendMessage(prefix + " §aDamage Indicators disabled for player " + player.getName());
+                                commandSender.sendMessage(prefix + "§aDamage Indicators disabled for player " + player.getName());
                             }else{
-                                commandSender.sendMessage(prefix + " §cthis player does not exists.");
+                                commandSender.sendMessage(prefix + "§cthis player does not exists.");
                             }
                         }else{
-                            commandSender.sendMessage(prefix + " §cInvalid command syntax: /spectraldamage disable <player>");
+                            commandSender.sendMessage(prefix + "§cInvalid command syntax: /spectraldamage disable <player>");
                         }
                     }else{
                         commandSender.sendMessage(ChatColor.RED + ConfigManager.parseString(ConfigVars.MESSAGE_NOT_PERMISSION));
@@ -68,7 +68,7 @@ public class SpectralDamageCommand implements CommandExecutor {
                     if (commandSender.hasPermission("spectraldamage.reload") || isOp) {
                         SpectralDamagePlugin.get().reloadConfig();
                         ConfigManager.load();
-                            commandSender.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_CONFIG_RELOADED));
+                            commandSender.sendMessage(prefix + "§a" + ConfigManager.parseString(ConfigVars.MESSAGE_CONFIG_RELOADED));
                     }else{
                         commandSender.sendMessage(ChatColor.RED + ConfigManager.parseString(ConfigVars.MESSAGE_NOT_PERMISSION));
                     }
@@ -79,7 +79,7 @@ public class SpectralDamageCommand implements CommandExecutor {
                         Player player = (Player) commandSender;
 
                         if(TaskType.check() == TaskType.WORLD) {
-                            player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_CANNOT_TOGGLE_INDICATOR));
+                            player.sendMessage(prefix + "§a" + ConfigManager.parseString(ConfigVars.MESSAGE_CANNOT_TOGGLE_INDICATOR));
                             if(isOp) {
                                 player.sendMessage("§7§oTo change this modify the plugin configuration value ShowOnlyToDamager to true §8(Message only visible to OPs");
                             }
@@ -89,10 +89,10 @@ public class SpectralDamageCommand implements CommandExecutor {
                         if (commandSender.hasPermission("spectraldamage.toggle") || isOp) {
                             if(SpectralDamagePlugin.PLAYER_VISIBILITY.getOrDefault(player, !ConfigManager.CONFIG_VALUES.get(ConfigVars.ENABLE_BY_DEFAULT).asBoolean())) {
                                 SpectralDamagePlugin.PLAYER_VISIBILITY.put(player,false);
-                                player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_ON));
+                                player.sendMessage(prefix + "§a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_ON));
                             }else{
                                 SpectralDamagePlugin.PLAYER_VISIBILITY.put(player,true);
-                                player.sendMessage(prefix + " §a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_OFF));
+                                player.sendMessage(prefix + "§a" + ConfigManager.parseString(ConfigVars.MESSAGE_INDICATOR_TOGGLE_OFF));
                             }
                         }else{
                             commandSender.sendMessage(ChatColor.RED + ConfigManager.parseString(ConfigVars.MESSAGE_NOT_PERMISSION));

@@ -71,7 +71,7 @@ public enum ConfigVars {
     // Entities (not players) are affected by damage display
     ENTITIES_AFFECTED("entities_damage_indicator", true),
     HOLOGRAM_FALLING_ANIMATION("falling_animation", true),
-    MESSAGE_PREFIX("message_prefix", "&c&lSpectralDamage &8-"),
+    MESSAGE_PREFIX("message_prefix", "&c&lSpectralDamage &8- "),
     MESSAGE_CONFIG_RELOADED("message_config_reloaded", "Config file reloaded successfully!"),
     MESSAGE_CANNOT_TOGGLE_INDICATOR("message_cannot_toggle_indicator", "Impossible to change the visibility of the damage indicators because they are by default visible to everyone."),
     MESSAGE_INDICATOR_TOGGLE_ON("message_indicator_toggle_on", "The visibility of damage indicators has been reactivated!"),
